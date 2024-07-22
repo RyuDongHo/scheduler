@@ -37,6 +37,16 @@
   cursor: pointer;
   text-align: center;
 }
+.longBtn{
+  width: 224px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 8px;
+  background-color: var(--color-white);
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+}
 
 /* radio타입 input태그의 기본 디자인 */
 .defaultRadio{

@@ -70,6 +70,6 @@
         required
       />
     </div>
-    <input type="submit" class="defaultBtn" value="회원 가입 완료" />
+    <input type="submit" class="longBtn" value="회원 가입 완료" />
   </form>
 </body>
