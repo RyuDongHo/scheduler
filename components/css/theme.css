@@ -28,36 +28,3 @@ body{
 .rowContainer{
   display: flex;
 }
-
-/* 기본 input태그 디자인 & input정보 배너 */
-.inputBanner{
-  width: 544px;
-  height: 62px;
-  padding-left: 0;
-  padding-right: 0;
-  line-height: 62px;
-  border-radius: 8px;
-  text-align: center;
-  background-color: var(--color-lightBlue);
-}
-.defaultInputText{
-  width: 544px;
-  height: 62px;
-  padding-left: 0;
-  padding-right: 0;
-  line-height: 62px;
-  border-radius: 8px;
-  border: none;
-  background-color: var(--color-white);
-  opacity: 0.5;
-}
-.defaultBtn{
-  width: 96px;
-  height: 40px;
-  padding-left: 0;
-  padding-right: 0;
-  line-height: 40px;
-  border-radius: 8px;
-  border: none;
-  background-color: var(--color-white);
-}
