@@ -1,3 +1,6 @@
+.columnContainer{
+  gap: 22px;
+}
 #findId {
   margin-right: 64px;
 }

@@ -2,8 +2,6 @@
 .inputBanner{
   width: 544px;
   height: 62px;
-  padding-left: 0;
-  padding-right: 0;
   line-height: 62px;
   border-radius: 8px;
   text-align: center;
@@ -14,12 +12,18 @@
 .defaultInputText{
   width: 544px;
   height: 62px;
-  padding-left: 0;
   line-height: 62px;
   border-radius: 8px;
   border: none;
   background-color: var(--color-transparent);
   font-size: 20px;
+}
+
+/* 아이디, 비밀번호 등 input의 이름 */
+.inputTitle{
+  font-weight: 800;
+  font-size: 16px;
+  display: block;
 }
 
 /* button타입 input태그의 기본 디자인 */
@@ -28,7 +32,6 @@
   height: 40px;
   line-height: 40px;
   border-radius: 8px;
-  border: none;
   background-color: var(--color-white);
   font-size: 12px;
   cursor: pointer;

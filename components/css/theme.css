@@ -19,11 +19,16 @@ body{
   gap: 40px;
 }
 
+input{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 /* 기본 컨테이너 */
 .columnContainer{
   display: flex;
   flex-direction: column;
-  gap: 40px;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
@@ -32,11 +37,4 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/* input을 담는 컨테이너 */
-.inputContainer{
-  height: 62px;
-  display: flex;
-  flex-direction: column;
 }

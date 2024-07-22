@@ -14,20 +14,26 @@
   <body>
     <form class="columnContainer" action="" method="post">
       <div class="inputBanner">Login</div>
-      <input
-        type="text"
-        id="id"
-        class="defaultInputText"
-        placeholder="아이디"
-        required
-      />
-      <input
-        type="text"
-        id="pw"
-        class="defaultInputText"
-        placeholder="비밀번호"
-        required
-      />
+      <div>
+        <span class="inputTitle">아이디</span>
+        <input
+          type="text"
+          id="id"
+          class="defaultInputText"
+          placeholder="아이디"
+          required
+        />
+      </div>
+      <div>
+        <span class="inputTitle">비밀번호</span>
+        <input
+          type="text"
+          id="pw"
+          class="defaultInputText"
+          placeholder="비밀번호"
+          required
+        />
+      </div>
     </form>
 
     <div class="rowContainer">
