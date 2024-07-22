@@ -1,0 +1,32 @@
+:root{
+  --color-lightBlue: #53D0FA;
+  --color-mint: #03FCEB;
+  --color-blue: #001DFA;
+  --color-mid-blue: #589DFA;
+  --color-white: #EDF1F8;
+  --color-transparent: #EDF1F80;
+  --color-gray: #D9D9D9;
+}
+
+.columnContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.defaultInput{
+  width: 544px;
+  height: 62px;
+  padding-left: 0;
+  padding-right: 0;
+  line-height: 62px;
+  border-radius: 8px;
+}
+.inputBanner{
+  width: 544px;
+  height: 62px;
+  padding-left: 0;
+  padding-right: 0;
+  line-height: 62px;
+  border-radius: 8px;
+  text-align: center;
+}
