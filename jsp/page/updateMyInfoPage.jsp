@@ -19,7 +19,7 @@
       <input
         type="text"
         id="id"
-        class="defaultInputText"
+        class="defaultText"
         placeholder="영어 와 숫자만 사용, 6~20글자"
         maxlength="20"
         required
@@ -30,7 +30,7 @@
       <input
         type="text"
         id="pw"
-        class="defaultInputText"
+        class="defaultText"
         placeholder="영어 / 숫자 / 특수문자 를 포함, 6~20글자"
         maxlength="20"
         required
@@ -41,7 +41,7 @@
       <input
         type="text"
         id="hp"
-        class="defaultInputText"
+        class="defaultText"
         placeholder="010-0000-0000"
         maxlength="13"
         required
@@ -52,7 +52,7 @@
       <input
         type="text"
         id="name"
-        class="defaultInputText"
+        class="defaultText"
         placeholder="영어와 한글만 사용, 6~20글자"
         maxlength="20"
         required

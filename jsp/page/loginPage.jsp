@@ -19,7 +19,7 @@
         <input
           type="text"
           id="id"
-          class="defaultInputText"
+          class="defaultText"
           placeholder="아이디"
           required
         />
@@ -29,7 +29,7 @@
         <input
           type="text"
           id="pw"
-          class="defaultInputText"
+          class="defaultText"
           placeholder="비밀번호"
           required
         />

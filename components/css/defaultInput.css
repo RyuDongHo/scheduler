@@ -9,7 +9,7 @@
 }
 
 /* text타입 input태그의 기본 디자인 */
-.defaultInputText{
+.defaultText{
   width: 544px;
   height: 62px;
   line-height: 62px;
