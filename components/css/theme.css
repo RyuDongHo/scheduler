@@ -1,26 +1,35 @@
+/* 커스텀 색상 */
 :root{
   --color-lightBlue: #53D0FA;
   --color-mint: #03FCEB;
   --color-blue: #001DFA;
   --color-mid-blue: #589DFA;
   --color-white: #EDF1F8;
-  --color-transparent: #EDF1F80;
   --color-gray: #D9D9D9;
 }
 
+/* 기본 body태그 디자인 */
+body{
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 80px;
+  gap: 40px;
+}
+
+/* flex 컨테이너 */
 .columnContainer{
   display: flex;
   flex-direction: column;
   gap: 40px;
+  flex-wrap: nowrap;
 }
-.defaultInput{
-  width: 544px;
-  height: 62px;
-  padding-left: 0;
-  padding-right: 0;
-  line-height: 62px;
-  border-radius: 8px;
+.rowContainer{
+  display: flex;
 }
+
+/* 기본 input태그 디자인 & input정보 배너 */
 .inputBanner{
   width: 544px;
   height: 62px;
@@ -29,4 +38,26 @@
   line-height: 62px;
   border-radius: 8px;
   text-align: center;
+  background-color: var(--color-lightBlue);
+}
+.defaultInputText{
+  width: 544px;
+  height: 62px;
+  padding-left: 0;
+  padding-right: 0;
+  line-height: 62px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--color-white);
+  opacity: 0.5;
+}
+.defaultBtn{
+  width: 96px;
+  height: 40px;
+  padding-left: 0;
+  padding-right: 0;
+  line-height: 40px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--color-white);
 }
