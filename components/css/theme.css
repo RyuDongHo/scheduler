@@ -6,6 +6,7 @@
   --color-mid-blue: #589DFA;
   --color-white: #EDF1F8;
   --color-gray: #D9D9D9;
+  --color-transparent: #EDF1F8AA;
 }
 
 /* 기본 body태그 디자인 */
@@ -18,13 +19,24 @@ body{
   gap: 40px;
 }
 
-/* flex 컨테이너 */
+/* 기본 컨테이너 */
 .columnContainer{
   display: flex;
   flex-direction: column;
   gap: 40px;
   flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 .rowContainer{
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* input을 담는 컨테이너 */
+.inputContainer{
+  height: 62px;
+  display: flex;
+  flex-direction: column;
 }

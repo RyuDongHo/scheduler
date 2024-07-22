@@ -1,4 +1,4 @@
-/* 기본 input태그 디자인 & input정보 배너 */
+/* 로그인, 회원가입, 비밀번호 찾기 등 의 정보가 담기는 배너 */
 .inputBanner{
   width: 544px;
   height: 62px;
@@ -9,27 +9,44 @@
   text-align: center;
   background-color: var(--color-lightBlue);
 }
+
+/* text타입 input태그의 기본 디자인 */
 .defaultInputText{
   width: 544px;
   height: 62px;
   padding-left: 0;
-  padding-right: 0;
   line-height: 62px;
   border-radius: 8px;
   border: none;
-  background-color: var(--color-white);
-  opacity: 0.5;
+  background-color: var(--color-transparent);
   font-size: 20px;
 }
+
+/* button타입 input태그의 기본 디자인 */
 .defaultBtn{
   width: 96px;
   height: 40px;
-  padding-left: 0;
-  padding-right: 0;
   line-height: 40px;
   border-radius: 8px;
   border: none;
   background-color: var(--color-white);
   font-size: 12px;
   cursor: pointer;
+  text-align: center;
+}
+
+/* radio타입 input태그의 기본 디자인 */
+.defaultRadio{
+  appearance: none;
+  width: 96px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 8px;
+  background-color: var(--color-white);
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+}
+.defaultRadio::after {
+  content: attr(label);
 }
