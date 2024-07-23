@@ -21,16 +21,18 @@
         id="id"
         class="text"
         placeholder="아이디"
+        maxlength="20"
         required
       />
     </div>
     <div>
       <span class="label">비밀번호</span>
       <input
-        type="text"
+        type="password"
         id="pw"
         class="text"
         placeholder="비밀번호"
+        maxlength="20"
         required
       />
     </div>
@@ -46,4 +48,6 @@
     <input id="signUp" type="button" class="btn" value="회원가입" />
     <input id="login" type="button" class="btn" value="로그인" />
   </div>
+
+  <script src="../../js/loginPage.js"></script>
 </body>

@@ -20,17 +20,19 @@
         type="text"
         id="id"
         class="text"
-        placeholder="아이디"
+        placeholder="영어 와 숫자만 사용, 6~20글자"
+        maxlength="20"
         required
       />
     </div>
     <div>
       <span class="label">비밀번호</span>
       <input
-        type="text"
+        type="password"
         id="pw"
         class="text"
-        placeholder="비밀번호"
+        placeholder="영어 / 숫자 / 특수문자 를 포함, 6~20글자"
+        maxlength="20"
         required
       />
     </div>
@@ -40,7 +42,8 @@
         type="text"
         id="hp"
         class="text"
-        placeholder="연락처"
+        placeholder="' - ' 없이 숫자만 입력"
+        maxlength="15"
         required
       />
     </div>
@@ -50,7 +53,8 @@
         type="text"
         id="name"
         class="text"
-        placeholder="이름"
+        placeholder="영어와 한글만 사용, 6~20글자"
+        maxlength="20"
         required
       />
     </div>
@@ -72,4 +76,6 @@
     </div>
     <input type="submit" class="longBtn" value="회원 가입 완료" />
   </form>
+
+  <script src="../../components/js/inputValidation.js"></script>
 </body>

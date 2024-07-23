@@ -28,7 +28,7 @@
     <div>
       <span class="label">비밀번호</span>
       <input
-        type="text"
+        type="password"
         id="pw"
         class="text"
         placeholder="영어 / 숫자 / 특수문자 를 포함, 6~20글자"
@@ -42,8 +42,8 @@
         type="text"
         id="hp"
         class="text"
-        placeholder="010-0000-0000"
-        maxlength="13"
+        placeholder="' - ' 없이 숫자만 입력"
+        maxlength="15"
         required
       />
     </div>
@@ -76,4 +76,6 @@
     </div>
     <input type="submit" class="longBtn" value="수정 완료" />
   </form>
+
+  <script src="../../components/js/inputValidation.js"></script>
 </body>
