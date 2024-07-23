@@ -1,0 +1,50 @@
+.columnContainer{
+  gap: 32px;
+}
+
+#year{
+  font-size: 36px;
+}
+#month{
+  box-shadow: 0 4px 8px var(--color-blue);
+}
+
+/* 요일 */
+.dayOfTheWeek{
+  font-size: 24px;
+  width: 96px;
+  height: 32px;
+  text-align: center;
+}
+
+/* 홀수 주차 */
+.oddWeek{
+  width: 96px;
+  height: 107px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+.oddWeek:nth-of-type(even){
+  background-color: var(--color-transparent);
+}
+/* 짝수 주차 */
+.evenWeek{
+  width: 96px;
+  height: 107px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+.evenWeek:nth-of-type(odd){
+  background-color: var(--color-white);
+}
+
+/* 일정 개수 */
+.scheduleCount{
+  color: red;
+}
