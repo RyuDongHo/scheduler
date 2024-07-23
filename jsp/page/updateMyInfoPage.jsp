@@ -13,46 +13,46 @@
 </head>
 <body>
   <form class="columnContainer" action="" method="post">
-    <div class="inputBanner">내 정보 수정</div>
+    <div class="banner">내 정보 수정</div>
     <div>
-      <span class="inputTitle">아이디</span>
+      <span class="label">아이디</span>
       <input
         type="text"
         id="id"
-        class="defaultText"
+        class="text"
         placeholder="영어 와 숫자만 사용, 6~20글자"
         maxlength="20"
         required
       />
     </div>
     <div>
-      <span class="inputTitle">비밀번호</span>
+      <span class="label">비밀번호</span>
       <input
         type="text"
         id="pw"
-        class="defaultText"
+        class="text"
         placeholder="영어 / 숫자 / 특수문자 를 포함, 6~20글자"
         maxlength="20"
         required
       />
     </div>
     <div>
-      <span class="inputTitle">연락처</span>
+      <span class="label">연락처</span>
       <input
         type="text"
         id="hp"
-        class="defaultText"
+        class="text"
         placeholder="010-0000-0000"
         maxlength="13"
         required
       />
     </div>
     <div>
-      <span class="inputTitle">이름</span>
+      <span class="label">이름</span>
       <input
         type="text"
         id="name"
-        class="defaultText"
+        class="text"
         placeholder="영어와 한글만 사용, 6~20글자"
         maxlength="20"
         required
@@ -61,14 +61,14 @@
     <div class="rowContainer">
       <input
         type="radio"
-        class="defaultRadio"
+        class="radio"
         label="경영"
         name="team"
         required
       />
       <input
         type="radio"
-        class="defaultRadio"
+        class="radio"
         label="디자인"
         name="team"
         required

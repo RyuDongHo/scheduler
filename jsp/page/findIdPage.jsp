@@ -13,13 +13,13 @@
 </head>
 <body>
   <form class="columnContainer" action="" method="post">
-    <div class="inputBanner">FindId</div>
+    <div class="banner">FindId</div>
     <div>
-      <span class="inputTitle">연락처</span>
+      <span class="label">연락처</span>
       <input
         type="text"
         id="hp"
-        class="defaultText"
+        class="text"
         placeholder="010-0000-0000"
         required
       />

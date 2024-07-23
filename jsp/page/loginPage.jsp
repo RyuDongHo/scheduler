@@ -13,23 +13,23 @@
   </head>
   <body>
     <form class="columnContainer" action="" method="post">
-      <div class="inputBanner">Login</div>
+      <div class="banner">Login</div>
       <div>
-        <span class="inputTitle">아이디</span>
+        <span class="label">아이디</span>
         <input
           type="text"
           id="id"
-          class="defaultText"
+          class="text"
           placeholder="아이디"
           required
         />
       </div>
       <div>
-        <span class="inputTitle">비밀번호</span>
+        <span class="label">비밀번호</span>
         <input
           type="text"
           id="pw"
-          class="defaultText"
+          class="text"
           placeholder="비밀번호"
           required
         />
@@ -37,14 +37,14 @@
     </form>
 
     <div class="rowContainer">
-      <input id="findId" type="button" class="defaultBtn" value="아이디 찾기" />
+      <input id="findId" type="button" class="btn" value="아이디 찾기" />
       <input
         id="findPw"
         type="button"
-        class="defaultBtn"
+        class="btn"
         value="비밀번호 찾기"
       />
-      <input id="signUp" type="button" class="defaultBtn" value="회원가입" />
-      <input id="login" type="button" class="defaultBtn" value="로그인" />
+      <input id="signUp" type="button" class="btn" value="회원가입" />
+      <input id="login" type="button" class="btn" value="로그인" />
     </div>
   </body>

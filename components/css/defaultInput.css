@@ -1,5 +1,5 @@
-/* 로그인, 회원가입, 비밀번호 찾기 등 의 정보가 담기는 배너 */
-.inputBanner{
+/* 페이지 최상단 로그인, 회원가입, 비밀번호 찾기 등 정보가 담기는 배너 */
+.banner{
   width: 544px;
   height: 62px;
   line-height: 62px;
@@ -7,9 +7,15 @@
   text-align: center;
   background-color: var(--color-lightBlue);
 }
+/* input에 들어갈 요소 */
+.label{
+  font-weight: 800;
+  font-size: 16px;
+  display: block;
+}
 
-/* text타입 input태그의 기본 디자인 */
-.defaultText{
+/* text타입 디자인 */
+.text{
   width: 544px;
   height: 62px;
   line-height: 62px;
@@ -19,15 +25,8 @@
   font-size: 20px;
 }
 
-/* 아이디, 비밀번호 등 input의 이름 */
-.inputTitle{
-  font-weight: 800;
-  font-size: 16px;
-  display: block;
-}
-
-/* button타입 input태그의 기본 디자인 */
-.defaultBtn{
+/* button타입 디자인 */
+.btn{
   width: 96px;
   height: 40px;
   line-height: 40px;
@@ -48,8 +47,8 @@
   text-align: center;
 }
 
-/* radio타입 input태그의 기본 디자인 */
-.defaultRadio{
+/* radio타입  디자인 */
+.radio{
   appearance: none;
   width: 96px;
   height: 40px;
@@ -60,6 +59,6 @@
   cursor: pointer;
   text-align: center;
 }
-.defaultRadio::after {
+.radio::after { /* radio 이름(label) 삽입 */
   content: attr(label);
 }

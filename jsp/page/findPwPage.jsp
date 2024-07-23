@@ -13,23 +13,23 @@
 </head>
 <body>
   <form class="columnContainer" action="" method="post">
-    <div class="inputBanner">FindPw</div>
+    <div class="banner">FindPw</div>
     <div>
-      <span class="inputTitle">아이디</span>
+      <span class="label">아이디</span>
       <input
         type="text"
         id="id"
-        class="defaultText"
+        class="text"
         placeholder="영어 와 숫자만 사용, 6~20글자"
         required
       />
     </div>
     <div>
-      <span class="inputTitle">연락처</span>
+      <span class="label">연락처</span>
       <input
         type="text"
         id="hp"
-        class="defaultText"
+        class="text"
         placeholder="010-0000-0000"
         required
       />

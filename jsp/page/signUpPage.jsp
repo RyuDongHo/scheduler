@@ -13,43 +13,43 @@
 </head>
 <body>
   <form class="columnContainer" action="" method="post">
-    <div class="inputBanner">회원가입</div>
+    <div class="banner">회원가입</div>
     <div>
-      <span class="inputTitle">아이디</span>
+      <span class="label">아이디</span>
       <input
         type="text"
         id="id"
-        class="defaultText"
+        class="text"
         placeholder="아이디"
         required
       />
     </div>
     <div>
-      <span class="inputTitle">비밀번호</span>
+      <span class="label">비밀번호</span>
       <input
         type="text"
         id="pw"
-        class="defaultText"
+        class="text"
         placeholder="비밀번호"
         required
       />
     </div>
     <div>
-      <span class="inputTitle">연락처</span>
+      <span class="label">연락처</span>
       <input
         type="text"
         id="hp"
-        class="defaultText"
+        class="text"
         placeholder="연락처"
         required
       />
     </div>
     <div>
-      <span class="inputTitle">이름</span>
+      <span class="label">이름</span>
       <input
         type="text"
         id="name"
-        class="defaultText"
+        class="text"
         placeholder="이름"
         required
       />
@@ -57,14 +57,14 @@
     <div class="rowContainer">
       <input
         type="radio"
-        class="defaultRadio"
+        class="radio"
         label="경영"
         name="team"
         required
       />
       <input
         type="radio"
-        class="defaultRadio"
+        class="radio"
         label="디자인"
         name="team"
         required
