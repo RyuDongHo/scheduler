@@ -38,3 +38,31 @@ input{
   justify-content: center;
   align-items: center;
 }
+
+/* 스크롤바 전체 */
+::-webkit-scrollbar {
+  width: 4px; /* 세로 스크롤바의 너비 */
+  height: 0px; /* 가로 스크롤바의 높이 */
+}
+
+/* 스크롤바 막대 */
+::-webkit-scrollbar-thumb {
+  height: 32px;
+  background-color: var(--color-blue); /* 스크롤바 막대의 색상 (파란색) */
+  border-radius: 4px; /* 스크롤바 막대의 둥근 모서리 반경 */
+}
+
+/* 스크롤바 막대 hover 시 */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-mint); /* 스크롤바 막대 hover 시 색상 (약간 더 어두운 파란색) */
+}
+
+/* 스크롤바 트랙 (막대 외부) */
+::-webkit-scrollbar-track {
+  display: none; /* 스크롤바 트랙의 색상 (밝은 회색) */
+}
+
+/* 스크롤바 화살표 삭제 */
+::-webkit-scrollbar-button {
+  display: none; /* 스크롤바 화살표 숨기기 */
+}
