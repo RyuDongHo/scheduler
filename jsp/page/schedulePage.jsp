@@ -22,23 +22,30 @@
     </div>
 
     <div id="myInfo" class="aside_tab">
-      <span>류동호</span> <span>qwer1234</span> <span>010-1111-2222</span>
+      <span>류동호</span> 
+      <span>qwer1234</span> 
+      <span>010-1111-2222</span>
       <span>경영</span>
     </div>
     <div id="btn-logOut" class="aside_tab">로그아웃</div>
     <div id="btn-moveToUpdateMyInfoPage" class="aside_tab">
-      내 정보 수정하기
+      내 정보 수정
     </div>
     <div id="memberList" class="aside_tab">
+      <span>류동호1</span>
+      <span>류동호2</span>
+      <span>류동호3</span>
+      <span>류동호4</span>
+      <span>류동호5</span>
+      <span>류동호6</span>
+      <span>류동호7</span>
+      <span>류동호8</span>
+      <span>류동호9</span>
+      <span>류동호10</span>
       <span>류동호</span>
       <span>류동호</span>
       <span>류동호</span>
-      <span>류동호</span>
-      <span>류동호</span>
-      <span>류동호</span>
-      <span>류동호</span>
-      <span>류동호</span>
-      <span>류동호</span>
+      <span>류동호 last</span>
     </div>
   </div>
 

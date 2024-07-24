@@ -5,9 +5,38 @@
 #year{
   font-size: 36px;
 }
+#btn-decreaseYear{
+  cursor: pointer;
+}
+#btn-increaseYear{
+  cursor: pointer;
+}
+#btn-decreaseYear::selection, #btn-increaseYear::selection, #year::selection, #yearNum::selection{
+  background-color: white;
+  color: black;
+}
+
 #month{
   box-shadow: 0 4px 8px var(--color-blue);
+  background-color: white;
 }
+#monthList{
+  border-radius: 8px;
+  display: none;
+}
+.monthNum{
+  width: 50px;
+  height: 62px;
+  background-color: var(--color-transparent);
+  cursor: pointer;
+}
+.monthNum:nth-of-type(1){
+  border-radius: 8px 0 0 8px;
+}
+.monthNum:nth-last-of-type(1){
+  border-radius: 0 8px 8px 0;
+}
+
 
 /* 요일 */
 .dayOfTheWeek{
@@ -27,8 +56,11 @@
   align-items: center;
   gap: 32px;
 }
-.oddWeek:nth-of-type(even){
+.oddWeek:nth-of-type(odd){
   background-color: var(--color-transparent);
+}
+.oddWeek:nth-of-type(even){
+  background-color: var(--color-white);
 }
 /* 짝수 주차 */
 .evenWeek{
@@ -43,8 +75,13 @@
 .evenWeek:nth-of-type(odd){
   background-color: var(--color-white);
 }
+.evenWeek:nth-of-type(even){
+  background-color: var(--color-transparent);
+}
 
 /* 일정 개수 */
 .scheduleCount{
   color: red;
 }
+
+

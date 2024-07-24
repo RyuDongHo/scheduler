@@ -5,14 +5,17 @@
   right: 0;
   top: 0;
   bottom: 0;
-  padding-top: 40px;
+  padding: 40px 0 40px 0;
   transition: all 1s;
   transform: translateX(129px);
   background-color: var(--color-white);
   display: flex;
   flex-direction: column;
+  justify-content: safe center;
+  /* 자식요소가 부모요소를 벗어나면 overflow범위를 벗어남 */
   align-items: center;
-  gap: 40px;
+  gap: 32px;
+  overflow: hidden;
 }
 
 /* aside 내부 요소 */
@@ -23,10 +26,10 @@
   width: 128px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   transition: all 0.7s;
   opacity: 0;
+  cursor: pointer;
 }
 
 /* aside btn */
@@ -50,7 +53,7 @@
 }
 
 #myInfo{
-  height: 145px;
+  padding: 32px 0 32px 0;
 }
 #btn-logOut, #btn-moveToUpdateMyInfoPage{
   height: 52px;
@@ -60,5 +63,12 @@
 #btn-resetSchedulePage{
   transition: all 1s;
   width: 32px;
-  cursor: pointer;
+}
+
+#memberList{
+  gap: 16px;
+  text-decoration: underline;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px 0 24px 0;
 }
