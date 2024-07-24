@@ -22,8 +22,8 @@ function toggleAside() {
   if (isAsideOpen) {
     upperArrow.style.transformOrigin = "0";
     upperArrow.style.transform = "rotate(-45deg)";
-    upperArrow.style.left = "-3px";
-    upperArrow.style.top = "1px";
+    upperArrow.style.left = "-1px";
+    upperArrow.style.top = "2px";
     lowerArrow.style.transformOrigin = "0";
     lowerArrow.style.transform = "rotate(45deg)";
 
@@ -35,8 +35,8 @@ function toggleAside() {
   } else {
     upperArrow.style.transformOrigin = "100%";
     upperArrow.style.transform = "rotate(45deg)";
-    upperArrow.style.left = "2px";
-    upperArrow.style.top = "1px";
+    upperArrow.style.left = "1px";
+    upperArrow.style.top = "2px";
     lowerArrow.style.transformOrigin = "100%";
     lowerArrow.style.transform = "rotate(-45deg)";
 
