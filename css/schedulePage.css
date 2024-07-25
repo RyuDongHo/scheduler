@@ -5,7 +5,7 @@
 .year-wrapper{
   font-size: 36px;
 }
-.year-wrapper__dercrease-btn, .year-wrapper__inrcrease-btn{
+.year-wrapper__dercrease-btn, .year-wrapper__increase-btn{
   cursor: pointer;
 }
 .year-wrapper__dercrease-btn::selection, .year-wrapper__increase-btn::selection, .year-wrapper::selection, .year-wrapper__num::selection{

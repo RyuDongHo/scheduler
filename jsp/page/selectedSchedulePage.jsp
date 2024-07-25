@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../../components/css/global.css" />
   <link rel="stylesheet" href="../../components/css/theme.css">
   <link rel="stylesheet" href="../../css/selectedSchedulePage.css">
-  <title>Document</title>
+  <title>Schedule</title>
 </head>
 <body>
   <div class="date">
