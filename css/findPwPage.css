@@ -1,3 +1,41 @@
-.columnContainer{
+/* find-pw-form */
+.find-pw-form{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
   gap: 22px;
+}
+.find-pw-form__banner{
+  width: 544px;
+  height: 62px;
+  line-height: 62px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: var(--color-lightBlue);
+}
+.find-pw-form__label{
+  font-weight: 800;
+  font-size: 16px;
+  display: block;
+}
+.find-pw-form__text{
+  width: 544px;
+  height: 62px;
+  line-height: 62px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--color-transparent);
+  font-size: 20px;
+}
+.find-pw-form__btn{
+  width: 224px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 8px;
+  background-color: var(--color-white);
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
 }

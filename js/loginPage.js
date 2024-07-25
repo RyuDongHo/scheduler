@@ -8,5 +8,6 @@ document.getElementById("signUp").addEventListener("click",()=>{
   location.href="./signUpPage.jsp"
 })
 document.getElementById("login").addEventListener("click",()=>{
-  location.href="./schedulePage.jsp"
+  
+  //location.href="./schedulePage.jsp"
 })

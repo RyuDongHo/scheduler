@@ -21,6 +21,8 @@ if (document.getElementById("id") != null) {
   errMsg.style.fontSize = "12px";
   errMsg.setAttribute("id", "idErrMsg");
   id.parentElement.appendChild(errMsg);
+
+  id.addEventListener("input", idValidation);
 }
 if (document.getElementById("pw") != null) {
   pw = document.getElementById("pw");
@@ -29,6 +31,8 @@ if (document.getElementById("pw") != null) {
   errMsg.style.fontSize = "12px";
   errMsg.setAttribute("id", "pwErrMsg");
   pw.parentElement.appendChild(errMsg);
+
+  pw.addEventListener("input", pwValidation);
 }
 if (document.getElementById("hp") != null) {
   hp = document.getElementById("hp");
@@ -37,6 +41,8 @@ if (document.getElementById("hp") != null) {
   errMsg.style.fontSize = "12px";
   errMsg.setAttribute("id", "hpErrMsg");
   hp.parentElement.appendChild(errMsg);
+
+  hp.addEventListener("input", hpValidation);
 }
 if (document.getElementById("name") != null) {
   _name = document.getElementById("name");
@@ -45,24 +51,21 @@ if (document.getElementById("name") != null) {
   errMsg.style.fontSize = "12px";
   errMsg.setAttribute("id", "nameErrMsg");
   _name.parentElement.appendChild(errMsg);
+
+  _name.addEventListener("input", nameValidation);
 }
 if (document.getElementsByName("team") != null) {
   team = document.getElementsByName("team");
+
+  team.forEach((node) => {
+    node.addEventListener("click", () => {
+      team.forEach((node) => {
+        if (node.checked) node.style.backgroundColor = "var(--color-mint)";
+        else node.style.backgroundColor = "var(--color-white)";
+      });
+    });
+  });
 }
-
-id.addEventListener("input", idValidation);
-pw.addEventListener("input", pwValidation);
-hp.addEventListener("input", hpValidation);
-_name.addEventListener("input", nameValidation);
-
-team.forEach((node) => {
-  node.addEventListener("click", ()=>{
-    team.forEach((node)=>{
-      if(node.checked) node.style.backgroundColor = "var(--color-mint)";
-      else node.style.backgroundColor = "var(--color-white)";
-    })
-  })
-});
 
 function idValidation() {
   if (idRegex.test(id.value)) {

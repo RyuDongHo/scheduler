@@ -1,22 +1,24 @@
 // 전역 변수
 let isAsideOpen = false;
 let aside = document.querySelector(".aside");
-let upperArrow = document.getElementById("upperArrow");
-let lowerArrow = document.getElementById("lowerArrow");
-let homeBtn = document.getElementById("btn-resetSchedulePage");
+let upperArrow = document.querySelector(".aside__upper-arrow");
+let lowerArrow = document.querySelector(".aside__lower-arrow");
+let homeBtn = document.querySelector(".aside__home-btn");
 
 
-// 기능 등록
-document.getElementById("btn-moveToUpdateMyInfoPage").addEventListener("click", ()=>{
+// 페이지 이동 등록
+document.querySelector(".aside__move-to-updateMyInfoPage").addEventListener("click", ()=>{
   location.href = "./updateMyInfoPage.jsp";
 })
-document.getElementById("btn-resetSchedulePage").addEventListener("click", ()=>{
+homeBtn.addEventListener("click", ()=>{
   location.href = "./schedulePage.jsp";
 })
-document.getElementById("btn-logOut").addEventListener("click", ()=>{
+document.querySelector(".aside__logout-btn").addEventListener("click", ()=>{
   location.href = "./loginPage.jsp";
 })
-document.getElementById("btn-toggleAside").addEventListener("click", clickAsideBtn);
+
+// aside 기능 등록
+document.querySelector(".aside__toggle").addEventListener("click", clickAsideBtn);
 
 function clickAsideBtn() {
   if (!isAsideOpen) {

@@ -5,76 +5,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>signUp</title>
+  <title>UpdateMyInfo</title>
   <link rel="stylesheet" href="../../components/css/global.css" />
   <link rel="stylesheet" href="../../components/css/theme.css" />
-  <link rel="stylesheet" href="../../components/css/defaultInput.css" />
   <link rel="stylesheet" href="../../css/updateMyInfoPage.css" />
 </head>
 <body>
-  <form class="columnContainer" action="" method="post">
-    <div class="banner">내 정보 수정</div>
+  <form class="update-info-form" action="./schedulePage.jsp" method="post">
+    <div class="update-info-form__banner">내 정보 수정</div>
     <div>
-      <span class="label">아이디</span>
+      <span class="update-info-form__label">아이디</span>
       <input
         type="text"
         id="id"
-        class="text"
+        class="update-info-form__text"
         placeholder="영어 와 숫자만 사용, 6~20글자"
         maxlength="20"
         required
       />
     </div>
     <div>
-      <span class="label">비밀번호</span>
+      <span class="update-info-form__label">비밀번호</span>
       <input
         type="password"
         id="pw"
-        class="text"
+        class="update-info-form__text"
         placeholder="영어 / 숫자 / 특수문자 를 포함, 6~20글자"
         maxlength="20"
         required
       />
     </div>
     <div>
-      <span class="label">연락처</span>
+      <span class="update-info-form__label">연락처</span>
       <input
         type="text"
         id="hp"
-        class="text"
+        class="update-info-form__text"
         placeholder="' - ' 없이 숫자만 입력"
         maxlength="15"
         required
       />
     </div>
     <div>
-      <span class="label">이름</span>
+      <span class="update-info-form__label">이름</span>
       <input
         type="text"
         id="name"
-        class="text"
+        class="update-info-form__text"
         placeholder="영어와 한글만 사용, 6~20글자"
         maxlength="20"
         required
       />
     </div>
-    <div class="rowContainer">
+    <div class="update-info-form__radio-wrapper">
       <input
         type="radio"
-        class="radio"
+        class="update-info-form__radio"
         label="경영"
         name="team"
         required
       />
       <input
         type="radio"
-        class="radio"
+        class="update-info-form__radio"
         label="디자인"
         name="team"
         required
       />
     </div>
-    <input type="submit" class="longBtn" value="수정 완료" />
+    <input type="submit" class="update-info-form__btn" value="수정 완료" />
   </form>
 
   <script src="../../components/js/inputValidation.js"></script>

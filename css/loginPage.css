@@ -1,12 +1,58 @@
-.columnContainer{
+/* login-form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
   gap: 22px;
 }
-#findId {
+.login-form__banner {
+  width: 544px;
+  height: 62px;
+  line-height: 62px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: var(--color-lightBlue);
+}
+.login-form__label {
+  font-weight: 800;
+  font-size: 16px;
+  display: block;
+}
+.login-form__text{
+  width: 544px;
+  height: 62px;
+  line-height: 62px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--color-transparent);
+  font-size: 20px;
+}
+
+/* btn-wrapper */
+.btn-wrapper{
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-wrapper__find-id{
   margin-right: 64px;
 }
-#findPw {
+.btn-wrapper__find-pw{
   margin-right: 32px;
 }
-#signUp {
+.btn-wrapper__sign-up{
   margin-right: 64px;
+}
+.btn-wrapper *{
+  width: 96px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 8px;
+  background-color: var(--color-white);
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
 }

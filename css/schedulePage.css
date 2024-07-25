@@ -2,52 +2,75 @@
   gap: 32px;
 }
 
-#year{
+.year-wrapper{
   font-size: 36px;
 }
-#btn-decreaseYear{
+.year-wrapper__dercrease-btn, .year-wrapper__inrcrease-btn{
   cursor: pointer;
 }
-#btn-increaseYear{
-  cursor: pointer;
-}
-#btn-decreaseYear::selection, #btn-increaseYear::selection, #year::selection, #yearNum::selection{
+.year-wrapper__dercrease-btn::selection, .year-wrapper__increase-btn::selection, .year-wrapper::selection, .year-wrapper__num::selection{
   background-color: white;
   color: black;
 }
 
-#month{
-  box-shadow: 0 4px 8px var(--color-blue);
-  background-color: white;
-}
-#monthList{
+.month{
+  width: 96px;
+  height: 40px;
+  line-height: 40px;
   border-radius: 8px;
-  display: none;
+  background-color: var(--color-white);
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 4px 8px var(--color-blue);
 }
-.monthNum{
+.month-wrapper{
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.month-wrapper__num{
   width: 50px;
   height: 62px;
   background-color: var(--color-transparent);
   cursor: pointer;
 }
-.monthNum:nth-of-type(1){
+.month-wrapper__num:nth-of-type(1){
   border-radius: 8px 0 0 8px;
 }
-.monthNum:nth-last-of-type(1){
+.month-wrapper__num:nth-last-of-type(1){
   border-radius: 0 8px 8px 0;
 }
 
 
+.calendar{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
 /* 요일 */
-.dayOfTheWeek{
+.calendar__day-of-week-wrapper{
+  display: flex;
+}
+.calendar__day-of-week{
   font-size: 24px;
   width: 96px;
   height: 32px;
   text-align: center;
 }
 
+
 /* 홀수 주차 */
-.oddWeek{
+.calendar__week{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calendar__odd-week-day{
   width: 96px;
   height: 107px;
   border-radius: 8px;
@@ -56,14 +79,14 @@
   align-items: center;
   gap: 32px;
 }
-.oddWeek:nth-of-type(odd){
+.calendar__odd-week-day:nth-of-type(odd){
   background-color: var(--color-transparent);
 }
-.oddWeek:nth-of-type(even){
+.calendar__odd-week-day:nth-of-type(even){
   background-color: var(--color-white);
 }
 /* 짝수 주차 */
-.evenWeek{
+.calendar__even-week-day{
   width: 96px;
   height: 107px;
   border-radius: 8px;
@@ -72,15 +95,15 @@
   align-items: center;
   gap: 32px;
 }
-.evenWeek:nth-of-type(odd){
+.calendar__even-week-day:nth-of-type(odd){
   background-color: var(--color-white);
 }
-.evenWeek:nth-of-type(even){
+.calendar__even-week-day:nth-of-type(even){
   background-color: var(--color-transparent);
 }
 
 /* 일정 개수 */
-.scheduleCount{
+.calendar__schedule-count{
   color: red;
 }
 

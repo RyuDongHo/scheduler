@@ -1,6 +1,62 @@
-.rowContainer{
-  gap: 32px
-}
-.columnContainer{
+/* sign-up-form */
+.sign-up-form{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
   gap: 22px;
+}
+.sign-up-form__banner{
+  width: 544px;
+  height: 62px;
+  line-height: 62px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: var(--color-lightBlue);
+}
+.sign-up-form__label{
+  font-weight: 800;
+  font-size: 16px;
+  display: block;
+}
+.sign-up-form__text{
+  width: 544px;
+  height: 62px;
+  line-height: 62px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--color-transparent);
+  font-size: 20px;
+}
+.sign-up-form__btn{
+  width: 224px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 8px;
+  background-color: var(--color-white);
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.sign-up-form__radio-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+.sign-up-form__radio{
+  appearance: none;
+  width: 96px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 8px;
+  background-color: var(--color-white);
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+}
+.sign-up-form__radio::after { /* radio 이름(label) 삽입 */
+  content: attr(label);
 }

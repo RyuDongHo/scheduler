@@ -1,12 +1,12 @@
-let yearNum = document.getElementById("yearNum");
-let month = document.getElementById("month");
-let monthList = document.getElementById("monthList");
+let yearNum = document.querySelector(".year-wrapper__num");
+let month = document.querySelector(".month");
+let monthList = document.querySelector(".month-wrapper");
 
-document.getElementById("btn-decreaseYear").addEventListener("click", () => {
+document.querySelector(".year-wrapper__dercrease-btn").addEventListener("click", () => {
   let num = yearNum.innerText;
   yearNum.innerText = --num;
 });
-document.getElementById("btn-increaseYear").addEventListener("click", () => {
+document.querySelector(".year-wrapper__increase-btn").addEventListener("click", () => {
   let num = yearNum.innerText;
   yearNum.innerText = ++num;
 });
