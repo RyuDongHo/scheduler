@@ -66,6 +66,7 @@
 
 /* 홀수 주차 */
 .calendar__week{
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;

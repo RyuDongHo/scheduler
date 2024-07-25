@@ -2,6 +2,9 @@ let yearNum = document.querySelector(".year-wrapper__num");
 let month = document.querySelector(".month");
 let monthList = document.querySelector(".month-wrapper");
 
+document.querySelector(".calendar__week-wrapper").addEventListener("click", ()=>{
+  location.href = "./selectedSchedulePage.jsp";
+})
 document.querySelector(".year-wrapper__dercrease-btn").addEventListener("click", () => {
   let num = yearNum.innerText;
   yearNum.innerText = --num;
