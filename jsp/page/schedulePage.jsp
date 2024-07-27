@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html" pageEncoding="utf-8" %>
 <%@ page import="java.util.*" %>
 <%
-  String userIdx = request.getParameter("userIdx");
+  int userIdx = 1; // 지금 로그인한 유저
+  int currentUserIdx = userIdx; // 스케줄을 확인할 유저, 초기엔 로그인한 유저의 스케줄을 가져온다
+  if(request.getParameter("userIdx") != null){
+    currentUserIdx = Integer.parseInt(request.getParameter("userIdx"));
+  }
   String input_year = request.getParameter("year");
   String input_month = request.getParameter("month");
 
@@ -18,6 +22,7 @@
     year = Integer.parseInt(input_year);
     month = Integer.parseInt(input_month);
   }
+  
   
   cal.set(year, month - 1, 1);
   startDay = cal.get(Calendar.DAY_OF_WEEK);
@@ -54,20 +59,19 @@
       내 정보 수정
     </div>
     <div class="aside__member-list">
-      <span>류동호1</span>
-      <span>류동호2</span>
-      <span>류동호3</span>
-      <span>류동호4</span>
-      <span>류동호5</span>
-      <span>류동호6</span>
-      <span>류동호7</span>
-      <span>류동호8</span>
-      <span>류동호9</span>
-      <span>류동호10</span>
-      <span>류동호</span>
-      <span>류동호</span>
-      <span>류동호</span>
-      <span>류동호 last</span>
+    <%
+      for(int i = 2; i < 12; ++i){
+        if(currentUserIdx != userIdx){
+          if(i == currentUserIdx){
+            out.println("<input class='aside__member--selected' type='button' idx='" + i + "' value='류동호'></input>");
+          } else{
+            out.println("<input class='aside__member' type='button' idx='" + i + "' value='류동호'></input>");
+          }
+        } else{
+          out.println("<input class='aside__member' type='button' idx='" + i + "' value='류동호'></input>");
+        }
+      }
+    %>
     </div>
   </aside>
 
@@ -107,8 +111,6 @@
             out.println("<div class='calendar__day'>&nbsp;</div>");
           }
           for (int i = 1; i <= lastDate; i++) {
-            // 일요일 찾기
-           
             if(startDay % 2 == 0){
               if(i % 2 == 1) out.println("<div class='calendar__day background-transparent'>" + i + "</div>");
               else out.println("<div class='calendar__day background-white'>" + i + "</div>");
@@ -122,6 +124,7 @@
         %>
   </main>
 
+  <script>let userIdx = <%=userIdx%>; let currentUserIdx = <%=currentUserIdx%>;</script>
   <script src="../../js/schedulePage.js"></script>
-  <script src="../../components/js/aside.js"></script>
+  
 </body>

@@ -4,6 +4,7 @@ let aside = document.querySelector("aside");
 let upperArrow = document.querySelector(".aside__upper-arrow");
 let lowerArrow = document.querySelector(".aside__lower-arrow");
 let homeBtn = document.querySelector(".aside__home-btn");
+let members = document.querySelectorAll(".aside__member");
 
 
 // 페이지 이동 등록
@@ -19,6 +20,12 @@ document.querySelector(".aside__logout-btn").addEventListener("click", ()=>{
 
 // aside 기능 등록
 document.querySelector(".aside__toggle").addEventListener("click", clickAsideBtn);
+for(let i = 0; i < members.length; ++i){
+  members[i].addEventListener("click", ()=>{
+    members[i].classList.add("aside__member--selected");
+    location.href = "./schedulePage.jsp?userIdx=?" + members[i].getAttribute("idx") + "&year"
+  })
+}
 
 function clickAsideBtn() {
   if (!isAsideOpen) {
@@ -31,27 +38,20 @@ function clickAsideBtn() {
 }
 function toggleAside() {
   if (isAsideOpen) {
-    upperArrow.style.transformOrigin = "0";
-    upperArrow.style.transform = "rotate(-45deg)";
-    upperArrow.style.left = "-1px";
-    upperArrow.style.top = "2px";
-    lowerArrow.style.transformOrigin = "0";
-    lowerArrow.style.transform = "rotate(45deg)";
-    // style을 직접 수정하는 게 아니라, class를 더 만들어서 붙이고 없애는 방식
-    // 
-
+    upperArrow.classList.add(".aside__upper-arrow--closed");
+    upperArrow.classList.remove(".aside__upper-arrow--opened");
+    lowerArrow.classList.add(".aside__lower-arrow--closed");
+    lowerArrow.classList.remove(".aside__lower-arrow--opened");
     for (let i = 2; i < aside.children.length; ++i) {
       aside.children[i].style.opacity = "0";
     }
     aside.style.transform = "translateX(129px)";
     homeBtn.style.transform = "translateX(-52px)";
   } else {
-    upperArrow.style.transformOrigin = "100%";
-    upperArrow.style.transform = "rotate(45deg)";
-    upperArrow.style.left = "1px";
-    upperArrow.style.top = "2px";
-    lowerArrow.style.transformOrigin = "100%";
-    lowerArrow.style.transform = "rotate(-45deg)";
+    upperArrow.classList.add(".aside__upper-arrow--opened");
+    upperArrow.classList.remove(".aside__upper-arrow--closed");
+    lowerArrow.classList.add(".aside__lower-arrow--opened");
+    lowerArrow.classList.remove(".aside__lower-arrow--closed");
 
     for (let i = 2; i < aside.children.length; ++i) {
       aside.children[i].style.opacity = "1";
@@ -60,6 +60,7 @@ function toggleAside() {
     homeBtn.style.transform = "translateX(0px)";
   }
 }
+
 
 
 // 초기 상태 설정
