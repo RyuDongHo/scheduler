@@ -21,6 +21,7 @@
         class="update-info-form__text"
         placeholder="영어 와 숫자만 사용, 6~20글자"
         maxlength="20"
+        autocomplete='off'
         required
       />
     </div>
@@ -32,6 +33,7 @@
         class="update-info-form__text"
         placeholder="영어 / 숫자 / 특수문자 를 포함, 6~20글자"
         maxlength="20"
+        autocomplete='off'
         required
       />
     </div>
@@ -43,6 +45,7 @@
         class="update-info-form__text"
         placeholder="' - ' 없이 숫자만 입력"
         maxlength="13"
+        autocomplete='off'
         required
       />
     </div>
@@ -54,6 +57,7 @@
         class="update-info-form__text"
         placeholder="영어와 한글만 사용, 6~20글자"
         maxlength="20"
+        autocomplete='off'
         required
       />
     </div>
@@ -63,6 +67,7 @@
         class="update-info-form__radio"
         label="경영"
         name="team"
+        autocomplete='off'
         required
       />
       <input

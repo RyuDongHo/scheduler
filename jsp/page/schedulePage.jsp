@@ -1,13 +1,26 @@
 <%@ page language="java" contentType="text/html" pageEncoding="utf-8" %>
 <%@ page import="java.util.*" %>
 <%
+  String userIdx = request.getParameter("userIdx");
+  String input_year = request.getParameter("year");
+  String input_month = request.getParameter("month");
+
   Calendar cal = Calendar.getInstance();
+  Calendar tCal = Calendar.getInstance();
+
   int year = cal.get(Calendar.YEAR);
   int month = cal.get(Calendar.MONTH) + 1;
   int day = cal.get(Calendar.DATE);
   int startDay = cal.get(Calendar.DAY_OF_WEEK);
   int lastDate = cal.getActualMaximum(Calendar.DATE);
 
+  if(input_year != null && input_month != null){
+    year = Integer.parseInt(input_year);
+    month = Integer.parseInt(input_month);
+  }
+  
+  cal.set(year, month - 1, 1);
+  startDay = cal.get(Calendar.DAY_OF_WEEK);
 
 %>
 <head>
@@ -20,24 +33,6 @@
   <link rel="stylesheet" href="../../css/schedulePage.css" />
 </head>
 <body>
-  <div>
-  <%=cal%>
-  </div>
-  <div>
-  <%=year%>
-  </div>
-  <div>
-  <%=month%>
-  </div>
-  <div>
-  <%=day%>
-  </div>
-  <div>
-  <%=startDay%>
-  </div>
-  <div>
-  <%=lastDate%>
-  </div>
 
   <aside>
     <img class="aside__home-btn" src="../../asset/images/house-solid.svg" alt="home"></img>
@@ -77,12 +72,12 @@
   </aside>
 
   <section id="year" class="year-wrapper">
-    <p class="year-wrapper__dercrease-btn">-</p>
-    <p class="year-wrapper__num">2024</p>
-    <p class="year-wrapper__increase-btn">+</p>
+    <input type="button" class="year-wrapper__dercrease-btn" value="-"></input>
+    <h3 class="year-wrapper__num"><%=year%></h3>
+    <input type="button" class="year-wrapper__increase-btn" value="+"></input>
   </section>
 
-  <input id="month" type="button" class="month" value="1" />
+  <input id="month" type="button" class="month" value="<%=month%>" />
 
   <section class="month-wrapper">
     <input type="button" class="month-wrapper__num" value="1"/>
@@ -100,63 +95,31 @@
   </section>
 
   <main class="calendar">
-    <div class="calendar__day-of-week-wrapper">
-      <div class="calendar__day-of-week">일</div>
-      <div class="calendar__day-of-week">월</div>
-      <div class="calendar__day-of-week">화</div>
-      <div class="calendar__day-of-week">수</div>
-      <div class="calendar__day-of-week">목</div>
-      <div class="calendar__day-of-week">금</div>
-      <div class="calendar__day-of-week">토</div>
-    </div>
-
-    <div class="calendar__week-wrapper">
-      <div class="calendar__week">
-        <div class="calendar__odd-week-day">1</div>
-        <div class="calendar__odd-week-day">2</div>
-        <div class="calendar__odd-week-day">3 <span class="calendar__schedule-count">3개</span> </div>
-        <div class="calendar__odd-week-day">4</div>
-        <div class="calendar__odd-week-day">5</div>
-        <div class="calendar__odd-week-day">6</div>
-        <div class="calendar__odd-week-day">7</div>
-      </div>
-      <div class="calendar__week">
-        <div class="calendar__even-week-day">1</div>
-        <div class="calendar__even-week-day">2</div>
-        <div class="calendar__even-week-day">3</div>
-        <div class="calendar__even-week-day">4</div>
-        <div class="calendar__even-week-day">5</div>
-        <div class="calendar__even-week-day">6</div>
-        <div class="calendar__even-week-day">7</div>
-      </div>
-      <div class="calendar__week">
-        <div class="calendar__odd-week-day">1</div>
-        <div class="calendar__odd-week-day">2</div>
-        <div class="calendar__odd-week-day">3</div>
-        <div class="calendar__odd-week-day">4</div>
-        <div class="calendar__odd-week-day">5</div>
-        <div class="calendar__odd-week-day">6</div>
-        <div class="calendar__odd-week-day">7</div>
-      </div>
-      <div class="calendar__week">
-        <div class="calendar__even-week-day">1</div>
-        <div class="calendar__even-week-day">2</div>
-        <div class="calendar__even-week-day">3</div>
-        <div class="calendar__even-week-day">4</div>
-        <div class="calendar__even-week-day">5</div>
-        <div class="calendar__even-week-day">6</div>
-        <div class="calendar__even-week-day">7</div>
-      </div>
-      <div class="calendar__week">
-        <div class="calendar__odd-week-day">1</div>
-        <div class="calendar__odd-week-day">2</div>
-        <div class="calendar__odd-week-day">3</div>
-        <div class="calendar__odd-week-day">4</div>
-        <div class="calendar__odd-week-day">5</div>
-        <div class="calendar__odd-week-day">6</div>
-        <div class="calendar__odd-week-day">7</div>
-      </div>
-    </div>
+        <div class="calendar__day-of-week">일</div>
+        <div class="calendar__day-of-week">월</div>
+        <div class="calendar__day-of-week">화</div>
+        <div class="calendar__day-of-week">수</div>
+        <div class="calendar__day-of-week">목</div>
+        <div class="calendar__day-of-week">금</div>
+        <div class="calendar__day-of-week">토</div>
+        <%
+          for (int i = 1; i < startDay; i++) {
+            out.println("<div class='calendar__day'>&nbsp;</div>");
+          }
+          for (int i = 1; i <= lastDate; i++) {
+            // 일요일 찾기
+           
+            if(startDay % 2 == 0){
+              if(i % 2 == 1) out.println("<div class='calendar__day background-transparent'>" + i + "</div>");
+              else out.println("<div class='calendar__day background-white'>" + i + "</div>");
+            }
+            else{
+              if(i % 2 == 1) out.println("<div class='calendar__day background-white'>" + i + "</div>");
+              else out.println("<div class='calendar__day background-transparent'>" + i + "</div>");
+            }
+            
+          }
+        %>
   </main>
 
   <script src="../../js/schedulePage.js"></script>

@@ -1,8 +1,15 @@
 
 .year-wrapper{
   font-size: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  gap: 4px;
+  /* gap 이상하게 들어가는데 이유를 모르겠네 */
 }
 .year-wrapper__dercrease-btn, .year-wrapper__increase-btn{
+  margin: 0;
   cursor: pointer;
 }
 .year-wrapper__dercrease-btn::selection, .year-wrapper__increase-btn::selection, .year-wrapper::selection, .year-wrapper__num::selection{
@@ -41,68 +48,41 @@
 
 
 .calendar{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  gap: 32px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 14px 107px 107px 107px 107px 107px 107px;
+  row-gap: 32px;
 }
-
-/* 요일 */
-.calendar__day-of-week-wrapper{
+.calendar__day{
+  width: 96px;
+  border-radius: 8px;
+  font-size: 24px;
   display: flex;
+  justify-content: center;
 }
 .calendar__day-of-week{
-  font-size: 24px;
   width: 96px;
-  height: 32px;
-  text-align: center;
-}
-
-
-/* 홀수 주차 */
-.calendar__week{
-  cursor: pointer;
+  font-size: 24px;
+  border-radius: 8px;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
-.calendar__odd-week-day{
+.calendar__sun{
   width: 96px;
   height: 107px;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
+  color: red;
 }
-.calendar__odd-week-day:nth-of-type(odd){
-  background-color: var(--color-transparent);
-}
-.calendar__odd-week-day:nth-of-type(even){
-  background-color: var(--color-white);
-}
-/* 짝수 주차 */
-.calendar__even-week-day{
-  width: 96px;
-  height: 107px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-}
-.calendar__even-week-day:nth-of-type(odd){
-  background-color: var(--color-white);
-}
-.calendar__even-week-day:nth-of-type(even){
-  background-color: var(--color-transparent);
+.today {
+  background-color: #e6e6e6;
+  font-weight: bold;
 }
 
-/* 일정 개수 */
-.calendar__schedule-count{
-  color: red;
+.background-white{
+  background-color: var(--color-white);
+}
+.background-transparent{
+  background-color: var(--color-transparent);
 }
 
 

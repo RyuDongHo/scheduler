@@ -13,13 +13,10 @@
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
-/* Sections
-   ========================================================================== */
-
-/**
- * Remove the margin in all browsers.
- */
-
+h3{
+  margin: 0;
+  padding: 0;
+}
 body {
   margin: 0;
 }
@@ -166,6 +163,9 @@ textarea {
   font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */
   margin: 0; /* 2 */
+}
+input{
+  background-color: white;
 }
 
 /**

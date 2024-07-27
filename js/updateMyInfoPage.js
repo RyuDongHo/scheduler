@@ -26,7 +26,9 @@ inputValidation(
 radioValidation("team", teamValidation, "update-info-form__radio", "update-info-form__radio--selected");
 
 document.querySelector(".update-info-form__btn").addEventListener("click", (e) => {
-  if((idValidation.inputLength * pwValidation.inputLength * hpValidation.inputLength * nameValidation.inputLength * teamValidation.inputLength) == 0) return;
+  if(idValidation.inputLength == 0 || pwValidation.inputLength == 0 || hpValidation.inputLength == 0 || nameValidation.inputLength == 0 || teamValidation.inputLength == 0){
+    return;
+  }
   if (!(idValidation.validation && pwValidation.validation && hpValidation.validation && nameValidation.validation && teamValidation.validation)) {
     e.preventDefault();
     alert("잘못된 입력");

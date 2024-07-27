@@ -40,6 +40,8 @@ function radioValidation(radioTagName, validationObj, oldClassName, newClassName
 
   for (let i = 0; i < radio.length; ++i) {
     radio[i].addEventListener("click", () => {
+      validationObj.validation = true;
+      validationObj.inputLength = 1;
       for (let j = 0; j < radio.length; ++j) {
         if (radio[j].checked) {
           radio[j].className = newClassName;
