@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../../css/signUpPage.css" />
 </head>
 <body>
-  <form class="sign-up-form" action="./schedulePage.jsp" method="post">
+  <form class="sign-up-form" action="../action/signUpAction.jsp" method="post">
     <div class="sign-up-form__banner">회원가입</div>
     <div>
       <span class="sign-up-form__label">아이디</span>
@@ -21,6 +21,7 @@
         class="sign-up-form__text"
         placeholder="영어 와 숫자만 사용, 6~20글자"
         maxlength="20"
+        autocomplete='off'
         required
       />
     </div>
@@ -32,6 +33,7 @@
         class="sign-up-form__text"
         placeholder="영어 / 숫자 / 특수문자 를 포함, 6~20글자"
         maxlength="20"
+        autocomplete='off'
         required
       />
     </div>
@@ -42,7 +44,8 @@
         id="hp"
         class="sign-up-form__text"
         placeholder="' - ' 없이 숫자만 입력"
-        maxlength="15"
+        maxlength="13"
+        autocomplete='off'
         required
       />
     </div>
@@ -77,4 +80,5 @@
   </form>
 
   <script src="../../components/js/inputValidation.js"></script>
+  <script src="../../js/signUpPage.js"></script>
 </body>

@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../../css/findIdPage.css">
 </head>
 <body>
-  <form class="find-id-form" action="" method="post">
+  <form class="find-id-form" action="../action/findIdAction.jsp" method="post">
     <div class="find-id-form__banner">FindId</div>
     <div>
       <span class="find-id-form__label">연락처</span>
@@ -19,12 +19,15 @@
         type="text"
         id="hp"
         class="find-id-form__text"
-        placeholder="010-0000-0000"
+        placeholder="' - ' 없이 숫자만 입력"
+        maxlength="13"
+        autocomplete='off'
         required
       />
     </div>
     <input type="submit" class="find-id-form__btn" value="아이디 찾기" />
   </form>
 
-    <script src="../../components/js/inputValidation.js"></script>
+  <script src="../../components/js/inputValidation.js"></script>
+  <script src="../../js/findIdPage.js"></script>
 </body>

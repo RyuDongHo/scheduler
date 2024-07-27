@@ -1,6 +1,6 @@
 // 전역 변수
 let isAsideOpen = false;
-let aside = document.querySelector(".aside");
+let aside = document.querySelector("aside");
 let upperArrow = document.querySelector(".aside__upper-arrow");
 let lowerArrow = document.querySelector(".aside__lower-arrow");
 let homeBtn = document.querySelector(".aside__home-btn");
@@ -37,6 +37,8 @@ function toggleAside() {
     upperArrow.style.top = "2px";
     lowerArrow.style.transformOrigin = "0";
     lowerArrow.style.transform = "rotate(45deg)";
+    // style을 직접 수정하는 게 아니라, class를 더 만들어서 붙이고 없애는 방식
+    // 
 
     for (let i = 2; i < aside.children.length; ++i) {
       aside.children[i].style.opacity = "0";

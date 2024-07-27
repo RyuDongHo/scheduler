@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../../css/updateMyInfoPage.css" />
 </head>
 <body>
-  <form class="update-info-form" action="./schedulePage.jsp" method="post">
+  <form class="update-info-form" action="../action/updateMyInfoAction.jsp" method="post">
     <div class="update-info-form__banner">내 정보 수정</div>
     <div>
       <span class="update-info-form__label">아이디</span>
@@ -42,7 +42,7 @@
         id="hp"
         class="update-info-form__text"
         placeholder="' - ' 없이 숫자만 입력"
-        maxlength="15"
+        maxlength="13"
         required
       />
     </div>
@@ -77,4 +77,5 @@
   </form>
 
   <script src="../../components/js/inputValidation.js"></script>
+  <script src="../../js/updateMyInfoPage.js"></script>
 </body>

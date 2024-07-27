@@ -24,6 +24,7 @@ input{
   padding: 0;
   border: 0;
 }
+/* global */
 
 /* 스크롤바 전체 */
 ::-webkit-scrollbar {
@@ -34,7 +35,7 @@ input{
 /* 스크롤바 막대 */
 ::-webkit-scrollbar-thumb {
   height: 32px;
-  background-color: var(--color-blue); /* 스크롤바 막대의 색상 (파란색) */
+  background-color: var(--color-lightBlue); /* 스크롤바 막대의 색상 (파란색) */
   border-radius: 4px; /* 스크롤바 막대의 둥근 모서리 반경 */
 }
 

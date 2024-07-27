@@ -1,101 +1,55 @@
-let id;
-let pw;
-let hp;
-let _name;
-let team;
-
 let idRegex = /^[a-zA-Z0-9]{4,20}$/;
 let pwRegex =
   /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[a-zA-Z\d!@#$%^&*(),.?":{}|<>]{6,20}$/;
-let hpRegex = "";
+let hpRegex = /^010-\d{4}-\d{4}/;
 let nameRegex = /^[가-힣a-zA-Z]{2,20}$/;
 
-let errMsg = document.createElement("div");
-errMsg.style.color = "red";
-errMsg.style.fontSize = "12px";
+let idValidation = {inputLength: 0, validation: false};
+let pwValidation = {inputLength: 0, validation: false};
+let hpValidation = {inputLength: 0, validation: false};
+let nameValidation = {inputLength: 0, validation: false};
+let teamValidation = {inputLength: 0, validation: false};
 
-if (document.getElementById("id") != null) {
-  id = document.getElementById("id");
+function inputValidation(inputTagId, regex, msg, validationObj) {
   let errMsg = document.createElement("div");
+  let inputTag = document.getElementById(inputTagId);
   errMsg.style.color = "red";
   errMsg.style.fontSize = "12px";
-  errMsg.setAttribute("id", "idErrMsg");
-  id.parentElement.appendChild(errMsg);
+  errMsg.setAttribute("id", "errMsg" + inputTagId);
+  document.getElementById(inputTagId).parentElement.appendChild(errMsg);
 
-  id.addEventListener("input", idValidation);
-}
-if (document.getElementById("pw") != null) {
-  pw = document.getElementById("pw");
-  let errMsg = document.createElement("div");
-  errMsg.style.color = "red";
-  errMsg.style.fontSize = "12px";
-  errMsg.setAttribute("id", "pwErrMsg");
-  pw.parentElement.appendChild(errMsg);
-
-  pw.addEventListener("input", pwValidation);
-}
-if (document.getElementById("hp") != null) {
-  hp = document.getElementById("hp");
-  let errMsg = document.createElement("div");
-  errMsg.style.color = "red";
-  errMsg.style.fontSize = "12px";
-  errMsg.setAttribute("id", "hpErrMsg");
-  hp.parentElement.appendChild(errMsg);
-
-  hp.addEventListener("input", hpValidation);
-}
-if (document.getElementById("name") != null) {
-  _name = document.getElementById("name");
-  let errMsg = document.createElement("div");
-  errMsg.style.color = "red";
-  errMsg.style.fontSize = "12px";
-  errMsg.setAttribute("id", "nameErrMsg");
-  _name.parentElement.appendChild(errMsg);
-
-  _name.addEventListener("input", nameValidation);
-}
-if (document.getElementsByName("team") != null) {
-  team = document.getElementsByName("team");
-
-  team.forEach((node) => {
-    node.addEventListener("click", () => {
-      team.forEach((node) => {
-        if (node.checked) node.style.backgroundColor = "var(--color-mint)";
-        else node.style.backgroundColor = "var(--color-white)";
-      });
-    });
+  inputTag.addEventListener("input", () => {
+    if (regex == hpRegex) {
+      inputTag.value = inputTag.value
+        .replace(/[^0-9]/g, "")
+        .replace(/^(\d{0,3})(\d{0,4})(\d{0,6})$/g, "$1-$2-$3")
+        .replace(/(\-{1,2})$/g, "");
+    }
+    if (regex.test(inputTag.value)) {
+      document.getElementById("errMsg" + inputTagId).innerHTML = "";
+      validationObj.validation = true;
+    } else {
+      document.getElementById("errMsg" + inputTagId).innerHTML = msg;
+      validationObj.validation = false;
+    }
+    validationObj.inputLength = inputTag.value.length;
   });
 }
+function radioValidation(radioTagName, validationObj, oldClassName, newClassName) {
+  let radio = document.getElementsByName(radioTagName);
 
-function idValidation() {
-  if (idRegex.test(id.value)) {
-    document.getElementById("idErrMsg").innerHTML = "";
-  } else {
-    document.getElementById("idErrMsg").innerHTML =
-      "영어 대소문자, 숫자를 사용한 4~20글자 로 설정해 주세요.";
+  for (let i = 0; i < radio.length; ++i) {
+    radio[i].addEventListener("click", () => {
+      for (let j = 0; j < radio.length; ++j) {
+        if (radio[j].checked) {
+          radio[j].className = newClassName;
+        } else {
+          radio[j].className = oldClassName;
+        }
+      }
+    });
   }
 }
 
-function pwValidation() {
-  if (pwRegex.test(pw.value)) {
-    document.getElementById("pwErrMsg").innerHTML = "";
-  } else {
-    document.getElementById("pwErrMsg").innerHTML =
-      "영어 대소문자, 숫자, 특수문자 를 각 최소 1개 이상 포함하여 6~20글자로 설정해주세요";
-  }
-}
-
-function hpValidation() {
-  hp.value = hp.value
-    .replace(/[^0-9]/g, "")
-    .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
-}
-
-function nameValidation() {
-  if (nameRegex.test(_name.value)) {
-    document.getElementById("nameErrMsg").innerHTML = "";
-  } else {
-    document.getElementById("nameErrMsg").innerHTML =
-      "영문과 한글만 사용가능하여 2글자 이상 입력해주세요.";
-  }
-}
+// 의존성이 너무 높음, id를 변경할 수 없고, 이 코드자체도 수정했을 때 결과를 알 수 없음
+// 함수만 따로 만들어 주는 게 맞다

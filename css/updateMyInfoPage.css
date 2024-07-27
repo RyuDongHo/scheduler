@@ -57,6 +57,18 @@
   cursor: pointer;
   text-align: center;
 }
-.update-info-form__radio::after { /* radio 이름(label) 삽입 */
+.update-info-form__radio--selected{
+  appearance: none;
+  width: 96px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 8px;
+  background-color: var(--color-white);
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  background-color: var(--color-mint);
+}
+.update-info-form__radio::after, .update-info-form__radio--selected::after { /* radio 이름(label) 삽입 */
   content: attr(label);
 }

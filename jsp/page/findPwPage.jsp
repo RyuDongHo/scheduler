@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../../css/findPwPage.css">
 </head>
 <body>
-  <form class="find-pw-form" action="" method="post">
+  <form class="find-pw-form" action="../action/findPwAction.jsp" method="post">
     <div class="find-pw-form__banner">FindPw</div>
     <div>
       <span class="find-pw-form__label">아이디</span>
@@ -20,6 +20,8 @@
         id="id"
         class="find-pw-form__text"
         placeholder="영어 와 숫자만 사용, 6~20글자"
+        maxlength="20"
+        autocomplete='off'
         required
       />
     </div>
@@ -29,7 +31,9 @@
         type="text"
         id="hp"
         class="find-pw-form__text"
-        placeholder="010-0000-0000"
+        placeholder="' - ' 없이 숫자만 입력"
+        maxlength="13"
+        autocomplete='off'
         required
       />
     </div>
@@ -37,4 +41,5 @@
   </form>
 
     <script src="../../components/js/inputValidation.js"></script>
+    <script src="../../js/findPwPage.js"></script>
 </body>

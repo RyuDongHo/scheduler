@@ -1,4 +1,4 @@
-.date{
+.date {
   position: absolute;
   top: 40px;
   left: 320px;
@@ -9,22 +9,23 @@
   flex-direction: column;
   gap: 16px;
 }
-body{
+body {
   padding-left: 320px;
 }
-.date__year{
+.date__year {
   font-size: 36px;
 }
-.date__month, .date__day{
+.date__month,
+.date__day {
   font-size: 24px;
 }
-
-.schedule-wrapper{
+.schedule-wrapper {
+  width: 884px;
   display: flex;
   align-items: end;
   gap: 34px;
 }
-.schedule-wrapper__schedule{
+.schedule-wrapper__schedule {
   display: flex;
   flex-direction: column;
   width: 544px;
@@ -32,8 +33,10 @@ body{
   border-radius: 8px;
   box-shadow: 0 4px 8px var(--color-blue);
 }
-
-.schedule-wrapper__modify-btn, .schedule-wrapper__delete-btn{
+.schedule-wrapper__modify-btn,
+.schedule-wrapper__delete-btn,
+.schedule-wrapper__apply-btn,
+.schedule-wrapper__cancel-btn {
   width: 96px;
   height: 40px;
   line-height: 40px;
@@ -45,8 +48,8 @@ body{
   background-color: white;
   box-shadow: 0 4px 8px var(--color-midBlue);
 }
-
-.schedule__time, .schedule__time-input{
+.schedule__time,
+.schedule__time-input {
   width: 128px;
   height: 28px;
   line-height: 28px;
@@ -55,14 +58,17 @@ body{
   border-radius: 8px;
   margin: 40px 0 0 32px;
 }
-.schedule__content, .schedule__content-input{
-  width: 159px;
+.schedule__content {
   height: 24px;
-  text-align: center;
   margin: 36px auto;
   /* 부모요소가 flex일 때 margin auto가 달라짐 */
   border-radius: 8px;
 }
-.schedule__content-input{
+.schedule__content-input {
+  width: 355px;
+  height: 24px;
+  margin: 36px auto;
+  /* 부모요소가 flex일 때 margin auto가 달라짐 */
+  border-radius: 8px;
   background-color: var(--color-white);
 }
