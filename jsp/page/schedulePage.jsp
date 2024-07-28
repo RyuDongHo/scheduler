@@ -1,31 +1,56 @@
 <%@ page language="java" contentType="text/html" pageEncoding="utf-8" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.util.*" %>
 <%
-  int userIdx = 1; // 지금 로그인한 유저
-  int currentUserIdx = userIdx; // 스케줄을 확인할 유저, 초기엔 로그인한 유저의 스케줄을 가져온다
+
+  Integer userIdx = (Integer)session.getAttribute("userIdx"); // 현재 로그인한 유저
+  if(userIdx == null){
+    response.sendRedirect("./loginPage.jsp");
+    return;
+  }
+
+  Class.forName("org.mariadb.jdbc.Driver");
+  Connection connect = DriverManager.getConnection("jdbc:mariadb://localhost:3306/schedule", "stageus", "1234"); // db연결
+
+  int currentUserIdx = userIdx; // 스케줄을 확인할 유저(default: 로그인한 유저)
   if(request.getParameter("userIdx") != null){
     currentUserIdx = Integer.parseInt(request.getParameter("userIdx"));
   }
-  String input_year = request.getParameter("year");
-  String input_month = request.getParameter("month");
+  String input_year = request.getParameter("year"); // 전달된 연도
+  String input_month = request.getParameter("month"); // 전달된 월
 
+  // 달력 설정
   Calendar cal = Calendar.getInstance();
-  Calendar tCal = Calendar.getInstance();
-
   int year = cal.get(Calendar.YEAR);
   int month = cal.get(Calendar.MONTH) + 1;
   int day = cal.get(Calendar.DATE);
   int startDay = cal.get(Calendar.DAY_OF_WEEK);
   int lastDate = cal.getActualMaximum(Calendar.DATE);
 
+  cal.set(year, month - 1, 1);
+  startDay = cal.get(Calendar.DAY_OF_WEEK);
   if(input_year != null && input_month != null){
     year = Integer.parseInt(input_year);
     month = Integer.parseInt(input_month);
   }
   
-  
-  cal.set(year, month - 1, 1);
-  startDay = cal.get(Calendar.DAY_OF_WEEK);
+  String sql = "SELECT `date`, COUNT(content) FROM schedule WHERE `userIdx`=? and `date` >= ? and `date` <= ? group by `date`";
+  PreparedStatement query = connect.prepareStatement(sql);
+  query.setInt(1, userIdx);
+  query.setString(2, year + "-" + month + "-" + "01");
+  query.setString(3, year + "-" + month + "-" + lastDate);
+  ResultSet schedule = query.executeQuery();
+  int isScheduleExist = 0;
+  if(schedule.next()) isScheduleExist = 1;
+
+  String leaderCheckSql = "SELECT IFNULL((SELECT `userIdx` FROM leader WHERE `userIdx`=?), 0)";
+  PreparedStatement leaderCheckQuery = connect.prepareStatement(leaderCheckSql);
+  leaderCheckQuery.setInt(1, userIdx);
+  ResultSet isLeader = leaderCheckQuery.executeQuery();
+  isLeader.next();
 
 %>
 <head>
@@ -34,7 +59,6 @@
   <title>Schedule</title>
   <link rel="stylesheet" href="../../components/css/global.css" />
   <link rel="stylesheet" href="../../components/css/theme.css" />
-  <link rel="stylesheet" href="../../components/css/aside.css">
   <link rel="stylesheet" href="../../css/schedulePage.css" />
 </head>
 <body>
@@ -49,7 +73,6 @@
 
     <div class="aside__my-info">
       <span>류동호</span> 
-      <%-- 글씨는 h1 h2 p... --%>
       <span>qwer1234</span> 
       <span>010-1111-2222</span>
       <span>경영</span>
@@ -63,12 +86,18 @@
       for(int i = 2; i < 12; ++i){
         if(currentUserIdx != userIdx){
           if(i == currentUserIdx){
-            out.println("<input class='aside__member--selected' type='button' idx='" + i + "' value='류동호'></input>");
+            %>
+              <input class='aside__member--selected' type='button' idx='<%=i%>' value="류동호"></input>
+            <%
           } else{
-            out.println("<input class='aside__member' type='button' idx='" + i + "' value='류동호'></input>");
+            %>
+              <input class='aside__member' type='button' idx='<%=i%>' value="류동호"></input>
+            <%
           }
         } else{
-          out.println("<input class='aside__member' type='button' idx='" + i + "' value='류동호'></input>");
+            %>
+              <input class='aside__member' type='button' idx='<%=i%>' value="류동호"></input>
+            <%
         }
       }
     %>
@@ -108,23 +137,90 @@
         <div class="calendar__day-of-week">토</div>
         <%
           for (int i = 1; i < startDay; i++) {
-            out.println("<div class='calendar__day'>&nbsp;</div>");
+            %>
+              <div class='calendar__day hide'></div>
+            <%
           }
+
           for (int i = 1; i <= lastDate; i++) {
             if(startDay % 2 == 0){
-              if(i % 2 == 1) out.println("<div class='calendar__day background-transparent'>" + i + "</div>");
-              else out.println("<div class='calendar__day background-white'>" + i + "</div>");
+              if(i % 2 == 1) {
+                %>
+                  <div class='calendar__day background-transparent' day="<%=i%>"><%=i%>
+                    <p class="calendar__schedule-count">
+                <%
+                    if(isScheduleExist == 1 && schedule.getInt(2) > 0 && 
+                      Integer.parseInt(schedule.getString(1).split("-")[2]) == i){
+                      %>
+                        <%=schedule.getInt(2)%>
+                      <%
+                      if(!schedule.next()) isScheduleExist = 0;
+                    }
+                %>  
+                    </p>
+                  </div>
+                <%
+              }
+              else {
+                %>
+                  <div class='calendar__day background-white' day="<%=i%>"><%=i%>
+                    <p class="calendar__schedule-count">
+                <%
+                    if(isScheduleExist == 1 && schedule.getInt(2) > 0 && 
+                      Integer.parseInt(schedule.getString(1).split("-")[2]) == i){
+                      %>
+                        <%=schedule.getInt(2)%>
+                      <%
+                      if(!schedule.next()) isScheduleExist = 0;
+                    }
+                %>  
+                    </p>
+                  </div>
+                <%
+              }
             }
             else{
-              if(i % 2 == 1) out.println("<div class='calendar__day background-white'>" + i + "</div>");
-              else out.println("<div class='calendar__day background-transparent'>" + i + "</div>");
+              if(i % 2 == 1) {
+                %>
+                  <div class='calendar__day background-white' day="<%=i%>"><%=i%>
+                    <p class="calendar__schedule-count">
+                <%
+                    if(isScheduleExist == 1 && schedule.getInt(2) > 0 && 
+                      Integer.parseInt(schedule.getString(1).split("-")[2]) == i){
+                      %>
+                        <%=schedule.getInt(2)%>
+                      <%
+                      if(!schedule.next()) isScheduleExist = 0;
+                    }
+                %>  
+                    </p>
+                  </div>
+                <%
+              }
+              else {
+                %>
+                  <div class='calendar__day background-transparent' day="<%=i%>"><%=i%>
+                    <p class="calendar__schedule-count">
+                <%
+                    if(isScheduleExist == 1 && schedule.getInt(2) > 0 && 
+                      Integer.parseInt(schedule.getString(1).split("-")[2]) == i){
+                      %>
+                        <%=schedule.getInt(2)%>
+                      <%
+                      if(!schedule.next()) isScheduleExist = 0;
+                    }
+                %>  
+                    </p>
+                  </div>
+                <%
+              }
             }
             
           }
         %>
   </main>
 
-  <script>let userIdx = <%=userIdx%>; let currentUserIdx = <%=currentUserIdx%>;</script>
+  <script>let isLeader = <%=isLeader.getInt(1)%>; let currentUserIdx = <%=currentUserIdx%>;</script>
   <script src="../../js/schedulePage.js"></script>
   
 </body>
