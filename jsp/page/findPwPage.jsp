@@ -18,10 +18,10 @@
       <input
         type="text"
         id="id"
+        name="id"
         class="find-pw-form__text"
         placeholder="영어 와 숫자만 사용, 6~20글자"
         maxlength="20"
-        autocomplete='off'
         required
       />
     </div>
@@ -30,14 +30,14 @@
       <input
         type="text"
         id="hp"
+        name="hp"
         class="find-pw-form__text"
         placeholder="' - ' 없이 숫자만 입력"
         maxlength="13"
-        autocomplete='off'
         required
       />
     </div>
-    <input type="submit" class="find-pw-form__btn" value="비밀번호 찾기" />
+    <input type="submit" class="find-pw-form__btn" value="비밀번호 찾기"/>
   </form>
 
     <script src="../../components/js/inputValidation.js"></script>

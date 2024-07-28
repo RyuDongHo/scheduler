@@ -18,14 +18,14 @@
       <input
         type="text"
         id="hp"
+        name="hp"
         class="find-id-form__text"
         placeholder="' - ' 없이 숫자만 입력"
         maxlength="13"
-        autocomplete='off'
         required
       />
     </div>
-    <input type="submit" class="find-id-form__btn" value="아이디 찾기" />
+    <input type="submit" class="find-id-form__btn" value="아이디 찾기"/>
   </form>
 
   <script src="../../components/js/inputValidation.js"></script>

@@ -5,7 +5,6 @@ inputValidation(
   hpValidation
 );
 
-
 document.querySelector(".find-id-form__btn").addEventListener("click", (e) => {
   if(hpValidation.inputLength == 0) return;
   if (!hpValidation.validation) {
