@@ -11,13 +11,14 @@
     <link rel="stylesheet" href="../../css/loginPage.css" />
 </head>
 <body>
-  <form class="login-form" action="./schedulePage.jsp" method="post">
+  <form class="login-form" action="../action/loginAction.jsp" method="post">
     <div class="login-form__banner">Login</div>
     <div>
       <span class="login-form__label">아이디</span>
       <input
         type="text"
         id="id"
+        name="id"
         class="login-form__text"
         placeholder="아이디"
         maxlength="20"
@@ -29,6 +30,7 @@
       <input
         type="password"
         id="pw"
+        name="pw"
         class="login-form__text"
         placeholder="비밀번호"
         maxlength="20"

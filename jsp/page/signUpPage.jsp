@@ -18,10 +18,10 @@
       <input
         type="text"
         id="id"
+        name="id"
         class="sign-up-form__text"
         placeholder="영어 와 숫자만 사용, 6~20글자"
         maxlength="20"
-        autocomplete='off'
         required
       />
     </div>
@@ -30,10 +30,10 @@
       <input
         type="password"
         id="pw"
+        name="pw"
         class="sign-up-form__text"
         placeholder="영어 / 숫자 / 특수문자 를 포함, 6~20글자"
         maxlength="20"
-        autocomplete='off'
         required
       />
     </div>
@@ -42,10 +42,10 @@
       <input
         type="text"
         id="hp"
+        name="hp"
         class="sign-up-form__text"
         placeholder="' - ' 없이 숫자만 입력"
         maxlength="13"
-        autocomplete='off'
         required
       />
     </div>
@@ -54,6 +54,7 @@
       <input
         type="text"
         id="name"
+        name="name"
         class="sign-up-form__text"
         placeholder="영어와 한글만 사용, 6~20글자"
         maxlength="20"
@@ -66,6 +67,7 @@
         class="sign-up-form__radio"
         label="경영"
         name="team"
+        value="1"
         required
       />
       <input
@@ -73,6 +75,7 @@
         class="sign-up-form__radio"
         label="디자인"
         name="team"
+        value="2"
         required
       />
     </div>

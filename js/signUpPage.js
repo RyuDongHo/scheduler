@@ -1,5 +1,3 @@
-
-
 inputValidation(
   "id",
   idRegex,
@@ -25,6 +23,19 @@ inputValidation(
   nameValidation
 );
 radioValidation("team", teamValidation, "sign-up-form__radio", "sign-up-form__radio--selected");
+window.addEventListener("pageshow", ()=>{
+  let team = document.getElementsByName("team");
+  for(let i = 0; i < team.length; ++i){
+    if(team[i].checked) team[i].className = "sign-up-form__radio--selected";
+  }
+})
+
+// window.onpageshow = function(){
+//   let team = document.getElementsByName("team");
+//   for(let i = 0; i < team.length; ++i){
+//     if(team[i].checked) team[i].className = "sign-up-form__radio--selected";
+//   }
+// }
 
 
 
