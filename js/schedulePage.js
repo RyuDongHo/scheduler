@@ -18,14 +18,24 @@ document
   .addEventListener("click", () => {
     --currentYear;
     location.href =
-      "./schedulePage.jsp?userIdx=" + currentUserIdx + "&year=" + currentYear + "&month=" + currentMonth;
+      "./schedulePage.jsp?userIdx=" +
+      currentUserIdx +
+      "&year=" +
+      currentYear +
+      "&month=" +
+      currentMonth;
   });
 document
   .querySelector(".year-wrapper__increase-btn")
   .addEventListener("click", () => {
     ++currentYear;
     location.href =
-      "./schedulePage.jsp?userIdx=" + currentUserIdx + "&year=" + currentYear + "&month=" + currentMonth;
+      "./schedulePage.jsp?userIdx=" +
+      currentUserIdx +
+      "&year=" +
+      currentYear +
+      "&month=" +
+      currentMonth;
   });
 
 month.addEventListener("click", () => {
@@ -41,7 +51,12 @@ month.addEventListener("click", () => {
 monthList.addEventListener("click", (e) => {
   if (e.target.value != null) {
     location.href =
-      "./schedulePage.jsp?userIdx=" + currentUserIdx + "&year=" + currentYear + "&month=" + e.target.value;
+      "./schedulePage.jsp?userIdx=" +
+      currentUserIdx +
+      "&year=" +
+      currentYear +
+      "&month=" +
+      e.target.value;
   }
 });
 
@@ -55,7 +70,7 @@ for (let i = 0; i < days.length; ++i) {
       "&month=" +
       currentMonth +
       "&day=" +
-      days[i].innerText;
+      days[i].getAttribute("day");
   });
 }
 
@@ -71,22 +86,27 @@ homeBtn.addEventListener("click", () => {
   location.href = "./schedulePage.jsp";
 });
 document.querySelector(".aside__logout-btn").addEventListener("click", () => {
-  location.href = "./loginPage.jsp";
+  location.href = "../action/logoutAction.jsp";
 });
 
 // aside 기능 등록
-for (let i = 0; i < members.length; ++i) {
-  members[i].addEventListener("click", () => {
-    currentUserIdx = members[i].getAttribute("idx");
-    members[i].classList.add("aside__member--selected");
-    location.href =
-      "./schedulePage.jsp?userIdx=" +
-      currentUserIdx +
-      "&year=" +
-      currentYear +
-      "&month=" +
-      currentMonth;
-  });
+if (isLeader == 1) {
+  for (let i = 0; i < members.length; ++i) {
+    members[i].addEventListener("click", () => {
+      currentUserIdx = members[i].getAttribute("idx");
+      members[i].classList.add("aside__member--selected");
+      location.href =
+        "./schedulePage.jsp?userIdx=" +
+        currentUserIdx +
+        "&year=" +
+        currentYear +
+        "&month=" +
+        currentMonth;
+    });
+  }
+}
+else{
+  document.querySelector(".aside__member-list").classList.add("hide");
 }
 
 document
@@ -103,27 +123,20 @@ function clickAsideBtn() {
 }
 function toggleAside() {
   if (isAsideOpen) {
-    upperArrow.style.transformOrigin = "0";
-    upperArrow.style.transform = "rotate(-45deg)";
-    upperArrow.style.left = "-1px";
-    upperArrow.style.top = "2px";
-    lowerArrow.style.transformOrigin = "0";
-    lowerArrow.style.transform = "rotate(45deg)";
-    // style을 직접 수정하는 게 아니라, class를 더 만들어서 붙이고 없애는 방식
-    //
-
+    upperArrow.classList.add("aside__upper-arrow--closed");
+    upperArrow.classList.remove("aside__upper-arrow--opened");
+    lowerArrow.classList.add("aside__lower-arrow--closed");
+    lowerArrow.classList.remove("aside__lower-arrow--opened");
     for (let i = 2; i < aside.children.length; ++i) {
       aside.children[i].style.opacity = "0";
     }
     aside.style.transform = "translateX(129px)";
     homeBtn.style.transform = "translateX(-52px)";
   } else {
-    upperArrow.style.transformOrigin = "100%";
-    upperArrow.style.transform = "rotate(45deg)";
-    upperArrow.style.left = "1px";
-    upperArrow.style.top = "2px";
-    lowerArrow.style.transformOrigin = "100%";
-    lowerArrow.style.transform = "rotate(-45deg)";
+    upperArrow.classList.add("aside__upper-arrow--opened");
+    upperArrow.classList.remove("aside__upper-arrow--closed");
+    lowerArrow.classList.add("aside__lower-arrow--opened");
+    lowerArrow.classList.remove("aside__lower-arrow--closed");
 
     for (let i = 2; i < aside.children.length; ++i) {
       aside.children[i].style.opacity = "1";
