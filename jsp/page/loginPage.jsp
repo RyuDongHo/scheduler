@@ -46,8 +46,8 @@
         class="btn-wrapper__find-pw"
         value="비밀번호 찾기"
       />
-      <input id="signUp" type="button" class="btn-wrapper__sign-up" value="회원가입" />
-      <input id="login" type="submit" class="btn-wrapper__login" value="로그인" />
+      <input id="signUp" type="button" class="btn-wrapper__sign-up" value="회원가입"/>
+      <input id="login" type="submit" class="btn-wrapper__login" value="로그인"/>
     </div>
   </form>
 
