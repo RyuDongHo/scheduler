@@ -51,8 +51,15 @@
   String leaderCheckSql = "SELECT IFNULL((SELECT `userIdx` FROM leader WHERE `userIdx`=?), 0)";
   PreparedStatement leaderCheckQuery = connect.prepareStatement(leaderCheckSql);
   leaderCheckQuery.setInt(1, userIdx);
-  ResultSet isLeader = leaderCheckQuery.executeQuery();
-  isLeader.next();
+  ResultSet isLeaderRs = leaderCheckQuery.executeQuery();
+  isLeaderRs.next();
+  int isLeader = 0;
+  if(isLeaderRs.getInt(1) == 0){
+    isLeader = 0;
+  }
+  else{
+    isLeader = 1;
+  }
 
   // 내 정보 가져오기
   String getMyInfoSql = "SELECT u.name, u.id, u.phoneNumber, t.name, t.idx FROM user as u\n"
@@ -64,7 +71,7 @@
 
   // 팀장이 로그인한 경우 팀원의 정보 가져오기
   ResultSet memberList = null;
-  if(isLeader.getInt(1) == 1){
+  if(isLeader == 1){
     String getMemberSql = "SELECT `idx`, `name` FROM user WHERE idx != ? and teamIdx = ?";
     PreparedStatement getMemberQuery = connect.prepareStatement(getMemberSql);
     getMemberQuery.setInt(1, userIdx);
@@ -106,7 +113,7 @@
     </div>
     <div class="aside__member-list">
     <%
-      if(isLeader.getInt(1) == 1){
+      if(isLeader == 1){
         while(memberList.next()){
           if(currentUserIdx == memberList.getInt(1)){
             %>
@@ -240,7 +247,7 @@
         %>
   </main>
 
-  <script>let isLeader = <%=isLeader.getInt(1)%>; let currentUserIdx = <%=currentUserIdx%>;</script>
+  <script>let isLeader = <%=isLeader%>; let currentUserIdx = <%=currentUserIdx%>;</script>
   <script src="../../js/schedulePage.js"></script>
   
 </body>
