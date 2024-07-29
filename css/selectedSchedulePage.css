@@ -33,6 +33,14 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 8px var(--color-blue);
 }
+.schedule-wrapper__schedule--passed {
+  display: flex;
+  flex-direction: column;
+  width: 544px;
+  height: 207px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px var(--color-gray);
+}
 .schedule-wrapper__modify-btn,
 .schedule-wrapper__delete-btn,
 .schedule-wrapper__apply-btn,
@@ -47,6 +55,17 @@ body {
   margin-right: 40px;
   background-color: white;
   box-shadow: 0 4px 8px var(--color-midBlue);
+}
+.schedule-wrapper__modify-btn--passed,
+.schedule-wrapper__delete-btn--passed {
+  width: 96px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 8px;
+  font-size: 12px;
+  text-align: center;
+  margin-right: 40px;
+  background-color: var(--color-gray);
 }
 .schedule__time,
 .schedule__time-input {
@@ -63,6 +82,12 @@ body {
   margin: 36px auto;
   /* 부모요소가 flex일 때 margin auto가 달라짐 */
   border-radius: 8px;
+}
+.schedule__content--passed{
+  height: 24px;
+  margin: 36px auto;
+  border-radius: 8px;
+  text-decoration: line-through;
 }
 .schedule__content-input {
   width: 355px;

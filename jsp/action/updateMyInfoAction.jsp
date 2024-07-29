@@ -26,12 +26,12 @@
   String nameRegex = "^[가-힣a-zA-Z]{2,20}$";
   //입력값 검사
   if(name == null || hp == null || id == null || pw == null || pwCheck == null || team == null){
-    out.println("<script>alert('비정상적 입asd력');</script>");
+    out.println("<script>alert('비정상적 입력');</script>");
     out.println("<script>history.back();</script>");
     return;
   }
   else if(!(Pattern.matches(idRegex, id) && Pattern.matches(pwRegex, pw) && Pattern.matches(hpRegex, hp) && Pattern.matches(nameRegex, name))){
-    out.println("<script>alert('비정상asd적 입력');</script>");
+    out.println("<script>alert('비정상적 입력');</script>");
     out.println("<script>history.back();</script>");
     return;
   }
