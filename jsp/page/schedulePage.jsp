@@ -155,96 +155,95 @@
   </section>
 
   <main class="calendar">
-        <div class="calendar__day-of-week">일</div>
-        <div class="calendar__day-of-week">월</div>
-        <div class="calendar__day-of-week">화</div>
-        <div class="calendar__day-of-week">수</div>
-        <div class="calendar__day-of-week">목</div>
-        <div class="calendar__day-of-week">금</div>
-        <div class="calendar__day-of-week">토</div>
+    <div class="calendar__day-of-week">일</div>
+    <div class="calendar__day-of-week">월</div>
+    <div class="calendar__day-of-week">화</div>
+    <div class="calendar__day-of-week">수</div>
+    <div class="calendar__day-of-week">목</div>
+    <div class="calendar__day-of-week">금</div>
+    <div class="calendar__day-of-week">토</div>
+    <%
+      for (int i = 1; i < startDay; i++) {
+        %>
+          <div class='calendar__day hide'></div>
         <%
-          for (int i = 1; i < startDay; i++) {
+      }
+      for (int i = 1; i <= lastDate; i++) {
+        if(startDay % 2 == 0){
+          if(i % 2 == 1) {
             %>
-              <div class='calendar__day hide'></div>
+              <div class='calendar__day background-transparent' day="<%=i%>"><%=i%>
+                <p class="calendar__schedule-count">
+            <%
+                if(isScheduleExist == 1 && schedule.getInt(2) > 0 && 
+                  Integer.parseInt(schedule.getString(1).split("-")[2]) == i){
+                  %>
+                    <%=schedule.getInt(2)%>
+                  <%
+                  if(!schedule.next()) isScheduleExist = 0;
+                }
+            %>  
+                </p>
+              </div>
             <%
           }
-
-          for (int i = 1; i <= lastDate; i++) {
-            if(startDay % 2 == 0){
-              if(i % 2 == 1) {
-                %>
-                  <div class='calendar__day background-transparent' day="<%=i%>"><%=i%>
-                    <p class="calendar__schedule-count">
-                <%
-                    if(isScheduleExist == 1 && schedule.getInt(2) > 0 && 
-                      Integer.parseInt(schedule.getString(1).split("-")[2]) == i){
-                      %>
-                        <%=schedule.getInt(2)%>
-                      <%
-                      if(!schedule.next()) isScheduleExist = 0;
-                    }
-                %>  
-                    </p>
-                  </div>
-                <%
-              }
-              else {
-                %>
-                  <div class='calendar__day background-white' day="<%=i%>"><%=i%>
-                    <p class="calendar__schedule-count">
-                <%
-                    if(isScheduleExist == 1 && schedule.getInt(2) > 0 && 
-                      Integer.parseInt(schedule.getString(1).split("-")[2]) == i){
-                      %>
-                        <%=schedule.getInt(2)%>
-                      <%
-                      if(!schedule.next()) isScheduleExist = 0;
-                    }
-                %>  
-                    </p>
-                  </div>
-                <%
-              }
-            }
-            else{
-              if(i % 2 == 1) {
-                %>
-                  <div class='calendar__day background-white' day="<%=i%>"><%=i%>
-                    <p class="calendar__schedule-count">
-                <%
-                    if(isScheduleExist == 1 && schedule.getInt(2) > 0 && 
-                      Integer.parseInt(schedule.getString(1).split("-")[2]) == i){
-                      %>
-                        <%=schedule.getInt(2)%>
-                      <%
-                      if(!schedule.next()) isScheduleExist = 0;
-                    }
-                %>  
-                    </p>
-                  </div>
-                <%
-              }
-              else {
-                %>
-                  <div class='calendar__day background-transparent' day="<%=i%>"><%=i%>
-                    <p class="calendar__schedule-count">
-                <%
-                    if(isScheduleExist == 1 && schedule.getInt(2) > 0 && 
-                      Integer.parseInt(schedule.getString(1).split("-")[2]) == i){
-                      %>
-                        <%=schedule.getInt(2)%>
-                      <%
-                      if(!schedule.next()) isScheduleExist = 0;
-                    }
-                %>  
-                    </p>
-                  </div>
-                <%
-              }
-            }
-            
+          else {
+            %>
+              <div class='calendar__day background-white' day="<%=i%>"><%=i%>
+                <p class="calendar__schedule-count">
+            <%
+                if(isScheduleExist == 1 && schedule.getInt(2) > 0 && 
+                  Integer.parseInt(schedule.getString(1).split("-")[2]) == i){
+                  %>
+                    <%=schedule.getInt(2)%>
+                  <%
+                  if(!schedule.next()) isScheduleExist = 0;
+                }
+            %>  
+                </p>
+              </div>
+            <%
           }
-        %>
+        }
+        else{
+          if(i % 2 == 1) {
+            %>
+              <div class='calendar__day background-white' day="<%=i%>"><%=i%>
+                <p class="calendar__schedule-count">
+            <%
+                if(isScheduleExist == 1 && schedule.getInt(2) > 0 && 
+                  Integer.parseInt(schedule.getString(1).split("-")[2]) == i){
+                  %>
+                    <%=schedule.getInt(2)%>
+                  <%
+                  if(!schedule.next()) isScheduleExist = 0;
+                }
+            %>  
+                </p>
+              </div>
+            <%
+          }
+          else {
+            %>
+              <div class='calendar__day background-transparent' day="<%=i%>"><%=i%>
+                <p class="calendar__schedule-count">
+            <%
+                if(isScheduleExist == 1 && schedule.getInt(2) > 0 && 
+                  Integer.parseInt(schedule.getString(1).split("-")[2]) == i){
+                  %>
+                    <%=schedule.getInt(2)%>
+                  <%
+                  if(!schedule.next()) isScheduleExist = 0;
+                }
+            %>  
+                </p>
+              </div>
+            <%
+          }
+        }
+        
+      }
+    %>
   </main>
 
   <script>let isLeader = <%=isLeader%>; let currentUserIdx = <%=currentUserIdx%>;</script>
