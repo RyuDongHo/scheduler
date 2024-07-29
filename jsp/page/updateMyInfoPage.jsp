@@ -39,6 +39,7 @@
       <input
         type="text"
         id="id"
+        name="id"
         class="update-info-form__text"
         placeholder="영어 와 숫자만 사용, 6~20글자"
         maxlength="20"
@@ -52,6 +53,7 @@
       <input
         type="password"
         id="pw"
+        name="pw"
         class="update-info-form__text"
         placeholder="영어 / 숫자 / 특수문자 를 포함, 6~20글자"
         maxlength="20"
@@ -61,10 +63,23 @@
       />
     </div>
     <div>
+      <span class="update-info-form__label">비밀번호 재확인</span>
+      <input
+        type="password"
+        id="pw-check"
+        name="pw-check"
+        class="update-info-form__text"
+        placeholder="영어 / 숫자 / 특수문자 를 포함, 6~20글자"
+        maxlength="20"
+        required
+      />
+    </div>
+    <div>
       <span class="update-info-form__label">연락처</span>
       <input
         type="text"
         id="hp"
+        name="hp"
         class="update-info-form__text"
         placeholder="' - ' 없이 숫자만 입력"
         maxlength="13"
@@ -78,6 +93,7 @@
       <input
         type="text"
         id="name"
+        name="name"
         class="update-info-form__text"
         placeholder="영어와 한글만 사용, 6~20글자"
         maxlength="20"
@@ -92,7 +108,7 @@
         class="update-info-form__radio"
         label="경영"
         name="team"
-        autocomplete='off'
+        value="1"
         required
       />
       <input
@@ -100,6 +116,7 @@
         class="update-info-form__radio"
         label="디자인"
         name="team"
+        value="2"
         required
       />
     </div>

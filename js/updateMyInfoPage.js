@@ -1,4 +1,3 @@
-
 inputValidation(
   "id",
   idRegex,
@@ -23,14 +22,38 @@ inputValidation(
   "영어와 한글만 사용, 2~20글자를 입력해주세요.",
   nameValidation
 );
-radioValidation("team", teamValidation, "update-info-form__radio", "update-info-form__radio--selected");
+radioValidation(
+  "team",
+  teamValidation,
+  "update-info-form__radio",
+  "update-info-form__radio--selected"
+);
+passwordCheckValidation("pw", "pw-check", pwCheckValidation);
 
-document.querySelector(".update-info-form__btn").addEventListener("click", (e) => {
-  if(idValidation.inputLength == 0 || pwValidation.inputLength == 0 || hpValidation.inputLength == 0 || nameValidation.inputLength == 0 || teamValidation.inputLength == 0){
-    return;
-  }
-  if (!(idValidation.validation && pwValidation.validation && hpValidation.validation && nameValidation.validation && teamValidation.validation)) {
-    e.preventDefault();
-    alert("잘못된 입력");
-  }
-});
+document
+  .querySelector(".update-info-form__btn")
+  .addEventListener("click", (e) => {
+    if (
+      idValidation.inputLength == 0 ||
+      pwValidation.inputLength == 0 ||
+      pwValidation.inputLength == 0 ||
+      hpValidation.inputLength == 0 ||
+      nameValidation.inputLength == 0 ||
+      teamValidation.inputLength == 0
+    ) {
+      return;
+    }
+    if (
+      !(
+        idValidation.validation &&
+        pwValidation.validation &&
+        pwValidation.validation &&
+        hpValidation.validation &&
+        nameValidation.validation &&
+        teamValidation.validation
+      )
+    ) {
+      e.preventDefault();
+      alert("잘못된 입력");
+    }
+  });
