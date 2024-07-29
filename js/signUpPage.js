@@ -43,7 +43,7 @@ document.querySelector(".sign-up-form__btn").addEventListener("click", (e) => {
     pwCheckValidation.inputLength == 0 ||
     hpValidation.inputLength == 0 ||
     nameValidation.inputLength == 0 ||
-    teamValidation.inputLength == 0 
+    teamValidation.inputLength == 0
   ) {
     return;
   }
