@@ -38,6 +38,18 @@
       />
     </div>
     <div>
+      <span class="sign-up-form__label">비밀번호 재확인</span>
+      <input
+        type="password"
+        id="pw-check"
+        name="pw-check"
+        class="sign-up-form__text"
+        placeholder="영어 / 숫자 / 특수문자 를 포함, 6~20글자"
+        maxlength="20"
+        required
+      />
+    </div>
+    <div>
       <span class="sign-up-form__label">연락처</span>
       <input
         type="text"

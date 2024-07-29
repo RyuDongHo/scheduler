@@ -5,6 +5,7 @@ let hpRegex = /^010-\d{4}-\d{4}/;
 let nameRegex = /^[가-힣a-zA-Z]{2,20}$/;
 
 let idValidation = {inputLength: 0, validation: false};
+let pwCheckValidation = {inputLength: 0, validation: false};
 let pwValidation = {inputLength: 0, validation: false};
 let hpValidation = {inputLength: 0, validation: false};
 let nameValidation = {inputLength: 0, validation: false};
@@ -34,6 +35,35 @@ function inputValidation(inputTagId, regex, msg, validationObj) {
     }
     validationObj.inputLength = inputTag.value.length;
   });
+}
+function passwordCheckValidation(pwTagId, pwCheckTagId, validationObj){
+  let errMsg = document.createElement("div");
+  let pwTag = document.getElementById(pwTagId);
+  let pwCheckTag = document.getElementById(pwCheckTagId);
+  errMsg.style.color = "red";
+  errMsg.style.fontSize = "12px";
+  errMsg.setAttribute("id", "errMsg" + pwCheckTagId);
+  document.getElementById(pwCheckTagId).parentElement.appendChild(errMsg);
+
+  pwCheckTag.addEventListener("input", ()=>{
+    if(pwCheckTag.value == pwTag.value){
+      document.getElementById("errMsg" + pwCheckTagId).innerHTML = "";
+      validationObj.validation = true;
+    }
+    else{
+      document.getElementById("errMsg" + pwCheckTagId).innerHTML = "비밀번호가 다릅니다.";
+      validationObj.validation = false;
+    }
+    validationObj.inputLength = pwCheckTag.value.length;
+  })
+  pwTag.addEventListener("input", ()=>{
+    if(pwCheckTag.value == pwTag.value){
+      document.getElementById("errMsg" + pwCheckTagId).innerHTML = "";
+    }
+    else{
+      document.getElementById("errMsg" + pwCheckTagId).innerHTML = "비밀번호가 다릅니다.";
+    }
+  })
 }
 function radioValidation(radioTagName, validationObj, oldClassName, newClassName) {
   let radio = document.getElementsByName(radioTagName);

@@ -1,6 +1,27 @@
 <%@ page language="java" contentType="text/html" pageEncoding="utf-8" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.util.*" %>
 <%
-  // 추가 예정
+
+  Integer userIdx = (Integer)session.getAttribute("userIdx"); // 현재 로그인한 유저
+  if(userIdx == null){
+    response.sendRedirect("./loginPage.jsp");
+    return;
+  }
+
+  Class.forName("org.mariadb.jdbc.Driver");
+  Connection connect = DriverManager.getConnection("jdbc:mariadb://localhost:3306/schedule", "stageus", "1234"); // db연결
+
+
+  String getMyInfoSql = "SELECT u.id, u.password, u.phoneNumber, u.name FROM user as u\n"
+                      + "join team as t on t.idx = u.teamIdx WHERE u.idx = ?";
+  PreparedStatement getMyInfoQuery = connect.prepareStatement(getMyInfoSql);
+  getMyInfoQuery.setInt(1, userIdx);
+  ResultSet myInfo = getMyInfoQuery.executeQuery();
+  myInfo.next();
 %>
 <head>
   <meta charset="UTF-8" />
@@ -22,6 +43,7 @@
         placeholder="영어 와 숫자만 사용, 6~20글자"
         maxlength="20"
         autocomplete='off'
+        value='<%=myInfo.getString(1)%>'
         required
       />
     </div>
@@ -34,6 +56,7 @@
         placeholder="영어 / 숫자 / 특수문자 를 포함, 6~20글자"
         maxlength="20"
         autocomplete='off'
+        value='<%=myInfo.getString(2)%>'
         required
       />
     </div>
@@ -46,6 +69,7 @@
         placeholder="' - ' 없이 숫자만 입력"
         maxlength="13"
         autocomplete='off'
+        value='<%=myInfo.getString(3)%>'
         required
       />
     </div>
@@ -58,6 +82,7 @@
         placeholder="영어와 한글만 사용, 6~20글자"
         maxlength="20"
         autocomplete='off'
+        value='<%=myInfo.getString(4)%>'
         required
       />
     </div>

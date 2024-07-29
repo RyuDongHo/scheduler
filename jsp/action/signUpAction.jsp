@@ -11,6 +11,7 @@
   String hp = request.getParameter("hp");
   String id = request.getParameter("id");
   String pw = request.getParameter("pw");
+  String pwCheck = request.getParameter("pw-check");
   String team = request.getParameter("team");
 
   String idRegex = "^[a-zA-Z0-9]{4,20}$";
@@ -18,13 +19,18 @@
   String pwRegex = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#$%^&*(),.?\":{}|<>])[a-zA-Z\\d!@#$%^&*(),.?\":{}|<>]{6,20}$";
   String nameRegex = "^[가-힣a-zA-Z]{2,20}$";
   //입력값 검사
-  if(name == null || hp == null || id == null || pw == null || team == null){
+  if(name == null || hp == null || id == null || pw == null || pwCheck == null || team == null){
     out.println("<script>alert('비정상적 입력');</script>");
     out.println("<script>history.back();</script>");
     return;
   }
   else if(!(Pattern.matches(idRegex, id) && Pattern.matches(pwRegex, pw) && Pattern.matches(hpRegex, hp) && Pattern.matches(nameRegex, name))){
     out.println("<script>alert('비정상적 입력');</script>");
+    out.println("<script>history.back();</script>");
+    return;
+  }
+  else if(!pw.equals(pwCheck)){
+    out.println("<script>alert('비밀번호가 서로 다릅니다.');</script>");
     out.println("<script>history.back();</script>");
     return;
   }
