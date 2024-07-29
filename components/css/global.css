@@ -105,20 +105,9 @@ samp {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
-
-/**
- * Add the correct font size in all browsers.
- */
-
 small {
   font-size: 80%;
 }
-
-/**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
-
 sub,
 sup {
   font-size: 75%;
@@ -126,34 +115,15 @@ sup {
   position: relative;
   vertical-align: baseline;
 }
-
 sub {
   bottom: -0.25em;
 }
-
 sup {
   top: -0.5em;
 }
-
-/* Embedded content
-   ========================================================================== */
-
-/**
- * Remove the border on images inside links in IE 10.
- */
-
 img {
   border-style: none;
 }
-
-/* Forms
-   ========================================================================== */
-
-/**
- * 1. Change the font styles in all browsers.
- * 2. Remove the margin in Firefox and Safari.
- */
-
 button,
 input,
 optgroup,
@@ -165,7 +135,14 @@ textarea {
   margin: 0; /* 2 */
 }
 input{
+  margin: 0;
+  padding: 0;
+  border: 0;
   background-color: white;
+}
+p {
+  margin: 0;
+  padding: 0;
 }
 
 /**

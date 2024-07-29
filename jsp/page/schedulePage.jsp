@@ -37,20 +37,40 @@
     month = Integer.parseInt(input_month);
   }
   
+  // 일정 개수 가져오기
   String sql = "SELECT `date`, COUNT(content) FROM schedule WHERE `userIdx`=? and `date` >= ? and `date` <= ? group by `date`";
   PreparedStatement query = connect.prepareStatement(sql);
-  query.setInt(1, userIdx);
+  query.setInt(1, currentUserIdx);
   query.setString(2, year + "-" + month + "-" + "01");
   query.setString(3, year + "-" + month + "-" + lastDate);
   ResultSet schedule = query.executeQuery();
   int isScheduleExist = 0;
   if(schedule.next()) isScheduleExist = 1;
 
+  // 팀장 여부 확인
   String leaderCheckSql = "SELECT IFNULL((SELECT `userIdx` FROM leader WHERE `userIdx`=?), 0)";
   PreparedStatement leaderCheckQuery = connect.prepareStatement(leaderCheckSql);
   leaderCheckQuery.setInt(1, userIdx);
   ResultSet isLeader = leaderCheckQuery.executeQuery();
   isLeader.next();
+
+  // 내 정보 가져오기
+  String getMyInfoSql = "SELECT u.name, u.id, u.phoneNumber, t.name, t.idx FROM user as u\n"
+                      + "join team as t on t.idx = u.teamIdx WHERE u.idx = ?";
+  PreparedStatement getMyInfoQuery = connect.prepareStatement(getMyInfoSql);
+  getMyInfoQuery.setInt(1, userIdx);
+  ResultSet myInfo = getMyInfoQuery.executeQuery();
+  myInfo.next();
+
+  // 팀장이 로그인한 경우 팀원의 정보 가져오기
+  ResultSet memberList = null;
+  if(isLeader.getInt(1) == 1){
+    String getMemberSql = "SELECT `idx`, `name` FROM user WHERE idx != ? and teamIdx = ?";
+    PreparedStatement getMemberQuery = connect.prepareStatement(getMemberSql);
+    getMemberQuery.setInt(1, userIdx);
+    getMemberQuery.setInt(2, myInfo.getInt(5));
+    memberList = getMemberQuery.executeQuery();
+  }
 
 %>
 <head>
@@ -72,10 +92,13 @@
     </div>
 
     <div class="aside__my-info">
-      <span>류동호</span> 
-      <span>qwer1234</span> 
-      <span>010-1111-2222</span>
-      <span>경영</span>
+      <%
+        for(int i = 1; i <= 4; ++i){
+          %>
+            <p><%=myInfo.getString(i)%></p>
+          <%
+        }
+      %>
     </div>
     <div class="aside__logout-btn">로그아웃</div>
     <div class="aside__move-to-updateMyInfoPage">
@@ -83,21 +106,18 @@
     </div>
     <div class="aside__member-list">
     <%
-      for(int i = 2; i < 12; ++i){
-        if(currentUserIdx != userIdx){
-          if(i == currentUserIdx){
+      if(isLeader.getInt(1) == 1){
+        while(memberList.next()){
+          if(currentUserIdx == memberList.getInt(1)){
             %>
-              <input class='aside__member--selected' type='button' idx='<%=i%>' value="류동호"></input>
-            <%
-          } else{
-            %>
-              <input class='aside__member' type='button' idx='<%=i%>' value="류동호"></input>
+              <input class='aside__member--selected' type='button' idx='<%=memberList.getInt(1)%>' value="<%=memberList.getString(2)%>"></input>
             <%
           }
-        } else{
+          else{
             %>
-              <input class='aside__member' type='button' idx='<%=i%>' value="류동호"></input>
+              <input class='aside__member' type='button' idx='<%=memberList.getInt(1)%>' value="<%=memberList.getString(2)%>"></input>
             <%
+          }
         }
       }
     %>
