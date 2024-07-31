@@ -3,16 +3,11 @@ const modifyBtn = document.querySelectorAll(".schedule-wrapper__modify-btn");
 const deleteBtn = document.querySelectorAll(".schedule-wrapper__delete-btn");
 const applyBtn = document.querySelectorAll(".schedule-wrapper__apply-btn");
 const cancelBtn = document.querySelectorAll(".schedule-wrapper__cancel-btn");
-// value
-const timeWrapper = document.querySelectorAll(".schedule__time-wrapper");
-const startTime = document.querySelectorAll(".schedule__start-time");
-const endTime = document.querySelectorAll(".schedule__end-time");
-const content = document.querySelectorAll(".schedule__content");
 // input
-const timeInputWrapper = document.querySelectorAll(".schedule__time-input-wrapper");
 const startTimeInput = document.querySelectorAll(".schedule__start-time-input");
 const endTimeInput = document.querySelectorAll(".schedule__end-time-input");
 const contentInput = document.querySelectorAll(".schedule__content-input");
+
 // modifyBtn
 for (let i = 0; i < modifyBtn.length; ++i) {
   modifyBtn[i].addEventListener("click", () => {

@@ -91,16 +91,24 @@ body {
   border-radius: 8px;
 }
 .schedule__content {
+  max-width: 500px;
   height: 24px;
   margin: 36px auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
   /* 부모요소가 flex일 때 margin auto가 달라짐 */
   border-radius: 8px;
+  white-space: nowrap;
 }
 .schedule__content--passed{
+  max-width: 500px;
   height: 24px;
   margin: 36px auto;
   border-radius: 8px;
   text-decoration: line-through;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .schedule__content-input {
   width: 355px;
