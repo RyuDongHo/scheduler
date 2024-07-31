@@ -13,31 +13,32 @@
     return;
   }
 
-  String time = request.getParameter("time");
+  String startTimeInput = request.getParameter("start-time");
+  String endTimeInput = request.getParameter("end-time");
   String year = request.getParameter("year");
   String month = request.getParameter("month");
   String day = request.getParameter("day");
   String content = request.getParameter("content");
 
-  String timeRegex = "^[a-zA-Z0-9]{4,20}$";
+  String timeRegex = "^\\d{2}:\\d{2}$";
   //입력값 검사
-  if(time == null || content == null){
+  if(startTimeInput == null || endTimeInput == null || content == null){
     out.println("<script>alert('비정상적 입력');</script>");
     out.println("<script>history.back();</script>");
     return;
   }
-  // else if(!Pattern.matches(timeRegex, time)){
-  //   out.println("<script>alert('비정상적 입력');</script>");
-  //   out.println("<script>history.back();</script>");
-  //   return;
-  // }
+  else if(!(Pattern.matches(timeRegex, endTimeInput) && Pattern.matches(timeRegex, startTimeInput))){
+    out.println("<script>alert('비정상적 입력');</script>");
+    out.println("<script>history.back();</script>");
+    return;
+  }
 
   // DB연결
   Class.forName("org.mariadb.jdbc.Driver");
   Connection connect = DriverManager.getConnection("jdbc:mariadb://localhost:3306/schedule", "stageus", "1234");
 
-  String startTime = year + "-" + month + "-" + day + " " + time.split("-")[0];
-  String endTime = year + "-" + month + "-" + day + " " + time.split("-")[1];
+  String startTime = year + "-" + month + "-" + day + " " + startTimeInput;
+  String endTime = year + "-" + month + "-" + day + " " + endTimeInput;
   String date = year + "-" + month + "-" + day;
 
 

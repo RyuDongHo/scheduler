@@ -1,87 +1,100 @@
-let modifyBtn = document.querySelectorAll(".schedule-wrapper__modify-btn");
-let deleteBtn = document.querySelectorAll(".schedule-wrapper__delete-btn");
-let applyBtn = document.querySelectorAll(".schedule-wrapper__apply-btn");
-let cancelBtn = document.querySelectorAll(".schedule-wrapper__cancel-btn");
-let time = document.querySelectorAll(".schedule__time");
-let timeInput = document.querySelectorAll(".schedule__time-input");
-let content = document.querySelectorAll(".schedule__content");
-let contentInput = document.querySelectorAll(".schedule__content-input");
-
+// Btn
+const modifyBtn = document.querySelectorAll(".schedule-wrapper__modify-btn");
+const deleteBtn = document.querySelectorAll(".schedule-wrapper__delete-btn");
+const applyBtn = document.querySelectorAll(".schedule-wrapper__apply-btn");
+const cancelBtn = document.querySelectorAll(".schedule-wrapper__cancel-btn");
+// value
+const timeWrapper = document.querySelectorAll(".schedule__time-wrapper");
+const startTime = document.querySelectorAll(".schedule__start-time");
+const endTime = document.querySelectorAll(".schedule__end-time");
+const content = document.querySelectorAll(".schedule__content");
+// input
+const timeInputWrapper = document.querySelectorAll(".schedule__time-input-wrapper");
+const startTimeInput = document.querySelectorAll(".schedule__start-time-input");
+const endTimeInput = document.querySelectorAll(".schedule__end-time-input");
+const contentInput = document.querySelectorAll(".schedule__content-input");
+// modifyBtn
 for (let i = 0; i < modifyBtn.length; ++i) {
-    modifyBtn[i].addEventListener("click", () => {
-    timeInput[i].setAttribute("type", "input");
-    contentInput[i].setAttribute("type", "input");
-    time[i].style.display = "none";
-    content[i].style.display = "none";
-    modifyBtn[i].setAttribute("type", "hidden");
-    deleteBtn[i].setAttribute("type", "hidden");
-    applyBtn[i].setAttribute("type", "button");
-    cancelBtn[i].setAttribute("type", "button");
+  modifyBtn[i].addEventListener("click", () => {
+    const shcheduleWrapper = modifyBtn[i].parentElement;
+    modifyBtn[i].classList.add("no-display");
+    shcheduleWrapper.querySelector(".schedule__time-wrapper").classList.add("no-display");
+    shcheduleWrapper.querySelector(".schedule__content").classList.add("no-display");
+    shcheduleWrapper.querySelector(".schedule__content-input").classList.remove("no-display");
+    shcheduleWrapper.querySelector(".schedule__time-input-wrapper").classList.remove("no-display");
+    shcheduleWrapper.querySelector(".schedule-wrapper__cancel-btn").classList.remove("no-display");
+    shcheduleWrapper.querySelector(".schedule-wrapper__apply-btn").classList.remove("no-display");
+    shcheduleWrapper.querySelector(".schedule-wrapper__delete-btn").classList.add("no-display");
   });
-
+}
+// cancelBtn
+for (let i = 0; i < cancelBtn.length; ++i) {
   cancelBtn[i].addEventListener("click", () => {
-    timeInput[i].setAttribute("type", "hidden");
-    contentInput[i].setAttribute("type", "hidden");
-    time[i].style.display = "block";
-    content[i].style.display = "block";
-    modifyBtn[i].setAttribute("type", "button");
-    deleteBtn[i].setAttribute("type", "button");
-    applyBtn[i].setAttribute("type", "hidden");
-    cancelBtn[i].setAttribute("type", "hidden");
+    const shcheduleWrapper = cancelBtn[i].parentElement;
+    cancelBtn[i].classList.add("no-display");
+    shcheduleWrapper.querySelector(".schedule__time-wrapper").classList.remove("no-display");
+    shcheduleWrapper.querySelector(".schedule__content").classList.remove("no-display");
+    shcheduleWrapper.querySelector(".schedule__content-input").classList.add("no-display");
+    shcheduleWrapper.querySelector(".schedule__time-input-wrapper").classList.add("no-display");
+    shcheduleWrapper.querySelector(".schedule-wrapper__modify-btn").classList.remove("no-display");
+    shcheduleWrapper.querySelector(".schedule-wrapper__apply-btn").classList.add("no-display");
+    shcheduleWrapper.querySelector(".schedule-wrapper__delete-btn").classList.remove("no-display");
   });
-
-  timeInput[i].addEventListener("input", () => {
-    timeInput[i].value = timeInput[i].value
+}
+// deletBtn
+for(let i = 0; i < deleteBtn.length; ++i){
+  deleteBtn[i].addEventListener("click", ()=>{
+    location.href = "../action/deleteScheduleAction.jsp?idx=" + deleteBtn[i].getAttribute("idx");
+  })
+}
+// input & applyBtn
+for (let i = 0; i < startTimeInput.length; ++i) {
+  startTimeInput[i].addEventListener("input", () => {
+    startTimeInput[i].value = startTimeInput[i].value
       .replace(/[^0-9]/g, "")
-      .replace(/^(\d{0,2})(\d{0,2})(\d{0,2})(\d{0,2})$/g, "$1:$2-$3:$4")
-      .replace(/(\:{1,2})$/g, "")
-      .replace(/(\-{1,2})$/g, "")
-      .replace(/(\:{1,2})$/g, "")
-      .replace(/(\-{1,2})$/g, "");
+      .replace(/^(\d{0,2})(\d{0,2})$/g, "$1:$2")
+      .replace(/(\:{1,2})$/g, "");
   });
-
-  applyBtn[i].addEventListener("click", () => {
-    if(timeInput[i].value.length < 11) {
+  endTimeInput[i].addEventListener("input", () => {
+    endTimeInput[i].value = endTimeInput[i].value
+      .replace(/[^0-9]/g, "")
+      .replace(/^(\d{0,2})(\d{0,2})$/g, "$1:$2")
+      .replace(/(\:{1,2})$/g, "");
+  });
+  applyBtn[i].addEventListener("click", (event) => {
+    if (
+      startTimeInput[i].value.length < 5 ||
+      endTimeInput[i].value.length < 5
+    ) {
       alert("시간/분 을 정확히 다 입력해주세요(ex: 10:07-11:28)");
+      event.preventDefault();
       return;
     }
-
-    let startHour = timeInput[i].value.split("-")[0].split(":")[0];
-    let startMinute = timeInput[i].value.split("-")[0].split(":")[1];
-    let endHour = timeInput[i].value.split("-")[1].split(":")[0];
-    let endMinute = timeInput[i].value.split("-")[1].split(":")[1];
-    if(startHour >= 24 || endHour >= 24 || startMinute >= 60 || endMinute >= 60){
+    let startHour = startTimeInput[i].value.split(":")[0];
+    let startMinute = startTimeInput[i].value.split(":")[1];
+    let endHour = endTimeInput[i].value.split(":")[0];
+    let endMinute = endTimeInput[i].value.split(":")[1];
+    if (
+      startHour >= 24 ||
+      endHour >= 24 ||
+      startMinute >= 60 ||
+      endMinute >= 60
+    ) {
       alert("00:00 ~ 23:59 안에서 입력 가능합니다.");
-    }
-    else if(startHour > endHour || (startHour == endHour && startMinute > endMinute)){
+      event.preventDefault();
+      return;
+    } else if (
+      startHour > endHour ||
+      (startHour == endHour && startMinute > endMinute)
+    ) {
       alert("시작시간이 종료시간 보다 클 수 없습니다.");
-    }
-    else if(contentInput[i].value.length == 0){
-      alert("일정을 입력하세요.")
-    }
-    else{
-      time[i].innerText = timeInput[i].value;
-      content[i].innerText = contentInput[i].value;
-
-      timeInput[i].setAttribute("type", "hidden");
-      contentInput[i].setAttribute("type", "hidden");
-      time[i].style.display = "block";
-      content[i].style.display = "block";
-      modifyBtn[i].setAttribute("type", "button");
-      deleteBtn[i].setAttribute("type", "button");
-      applyBtn[i].setAttribute("type", "hidden");
-      cancelBtn[i].setAttribute("type", "hidden");
+      event.preventDefault();
+      return;
+    } else if (contentInput[i].value.length == 0) {
+      alert("일정을 입력하세요.");
+      event.preventDefault();
+      return;
     }
   });
-
-  // deleteBtn[i].addEventListener("click", () => {
-  //   deleteBtn[i].parentElement.childNodes[1].style.boxShadow = "0 4px 8px var(--color-gray)";
-  //   modifyBtn[i].style.boxShadow = "0 0 0 0";
-  //   modifyBtn[i].style.backgroundColor = "var(--color-gray)";
-  //   modifyBtn[i].style.pointerEvents = "none";
-  //   deleteBtn[i].style.boxShadow = "0 0 0 0";
-  //   deleteBtn[i].style.backgroundColor = "var(--color-gray)";
-  //   content[i].style.textDecoration = "line-through";
-
-  // })
 }
+// cancelBtn

@@ -29,7 +29,7 @@
   Class.forName("org.mariadb.jdbc.Driver");
   Connection connect = DriverManager.getConnection("jdbc:mariadb://localhost:3306/schedule", "stageus", "1234");
 
-  String sql = "SELECT `startTime`, `endTime`, `content` FROM schedule WHERE `userIdx`=? and `startTime` >= ? and `endTime` <= ?"
+  String sql = "SELECT `startTime`, `endTime`, `content`, `idx` FROM schedule WHERE `userIdx`=? and `startTime` >= ? and `endTime` <= ?"
               +"ORDER BY `startTime` ASC";
   PreparedStatement query = connect.prepareStatement(sql);
   query.setInt(1, currentUserIdx);
@@ -64,36 +64,53 @@
     String startTime = result.getString(1).split(" ")[1].split(":")[0] + ":" + result.getString(1).split(" ")[1].split(":")[1];
     String endTime = result.getString(2).split(" ")[1].split(":")[0] + ":" + result.getString(2).split(" ")[1].split(":")[1];
     String content = result.getString(3);
+    int scheduleIdx = result.getInt(4);
     Date end = sdf.parse(result.getString(2));
     
     if(currentDate.before(end)){
+    // 진행중인 일정
 %>
       <form action="" method="post" class="schedule-wrapper">
         <div class="schedule-wrapper__schedule">
-          <div class="schedule__time"><%=startTime%>-<%=endTime%></div>
-          <input class="schedule__time-input" maxlength="11" type="hidden">
+          <div class="schedule__time-wrapper">
+            <div class="schedule__start-time"><%=startTime%></div>
+            <span>-</span>
+            <div class="schedule__end-time"><%=endTime%></div>
+          </div>
+
+          <div class="schedule__time-input-wrapper no-display">
+            <input class="schedule__start-time-input" name="start-time" maxlength="5" type="text" placeholder="HH:MM">
+            <span>-</span>
+            <input class="schedule__end-time-input" name="end-time" maxlength="5" type="text" placeholder="HH:MM">
+          </div>
+
           <div class="schedule__content"><%=content%></div>
-          <input class="schedule__content-input" type="hidden">
+
+          <input class="schedule__content-input no-display" type="text">
         </div>
 <%  
         if(userIdx == currentUserIdx){
 %>  
           <input type="button" class="schedule-wrapper__modify-btn" value="수정">
-          <input type="button" class="schedule-wrapper__delete-btn" value="삭제">
-          <input type="hidden" class="schedule-wrapper__apply-btn" value="등록">
-          <input type="hidden" class="schedule-wrapper__cancel-btn" value="취소">
+          <input type="button" class="schedule-wrapper__delete-btn" idx="<%=scheduleIdx%>" value="삭제">
+          <input type="button" class="schedule-wrapper__apply-btn no-display" value="등록">
+          <input type="button" class="schedule-wrapper__cancel-btn no-display" value="취소">
 <%  
         }
 %>  
       </form>
 <%
     }
-
     else if(currentDate.after(end)){
+    // 만료된 일정
 %>
       <form action="" method="post" class="schedule-wrapper">
         <div class="schedule-wrapper__schedule--passed">
-          <div class="schedule__time"><%=startTime%>-<%=endTime%></div>
+          <div class="schedule__time-wrapper">
+            <div class="schedule__start-time--passed"><%=startTime%></div>
+            <span>-</span>
+            <div class="schedule__end-time--passed"><%=endTime%></div>
+          </div>
           <div class="schedule__content--passed"><%=content%></div>
         </div>
 <%  
@@ -113,18 +130,20 @@
 
 <%
   if(userIdx == currentUserIdx){
+  // 로그인한 사용자가 본인의 일정을 보고 있는 경우
+  // 새 일정을 등록할 수 있는 input
 %>
 
   <form action="../action/insertScheduleAction.jsp" method="post" class="schedule-wrapper">
     <div class="schedule-wrapper__schedule">
-      <input class="schedule__time-input" name="time" maxlength="11" type="text">
-      <input class="schedule__content-input" name="content" type="text">
+      <div class="schedule__time-input-wrapper">
+        <input class="schedule__start-time-input" name="start-time" maxlength="5" type="text" placeholder="HH:MM">
+        <span>-</span>
+        <input class="schedule__end-time-input" name="end-time" maxlength="5" type="text" placeholder="HH:MM">
+      </div>
+      <input class="schedule__content-input" name="content" type="text" placeholder="일정을 입력하세요.">
     </div>
-    <input type="hidden" class="schedule-wrapper__modify-btn" value="수정">
-    <input type="hidden" class="schedule-wrapper__delete-btn" value="삭제">
-
     <input type="submit" class="schedule-wrapper__apply-btn" value="등록">
-    <input type="hidden" class="schedule-wrapper__cancel-btn" value="취소">
 
     <input type="hidden" name="year" value="<%=year%>">
     <input type="hidden" name="month" value="<%=month%>">
