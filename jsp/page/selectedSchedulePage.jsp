@@ -70,7 +70,7 @@
     if(currentDate.before(end)){
     // 진행중인 일정
 %>
-      <form action="" method="post" class="schedule-wrapper">
+      <form action="../action/updateScheduleAction.jsp" method="post" class="schedule-wrapper">
         <div class="schedule-wrapper__schedule">
           <div class="schedule__time-wrapper">
             <div class="schedule__start-time"><%=startTime%></div>
@@ -86,15 +86,22 @@
 
           <div class="schedule__content"><%=content%></div>
 
-          <input class="schedule__content-input no-display" type="text">
+          <input class="schedule__content-input no-display" name="content" type="text">
         </div>
 <%  
         if(userIdx == currentUserIdx){
 %>  
           <input type="button" class="schedule-wrapper__modify-btn" value="수정">
-          <input type="button" class="schedule-wrapper__delete-btn" idx="<%=scheduleIdx%>" value="삭제">
-          <input type="button" class="schedule-wrapper__apply-btn no-display" value="등록">
+          <input type="button" class="schedule-wrapper__delete-btn" data-schedule-idx="<%=scheduleIdx%>" 
+                                                                    data-current-user-idx="<%=currentUserIdx%>" 
+                                                                    value="삭제">
+          <input type="submit" class="schedule-wrapper__apply-btn no-display" value="등록">
           <input type="button" class="schedule-wrapper__cancel-btn no-display" value="취소">
+          <input type="hidden" name="scheduleIdx" value="<%=scheduleIdx%>">
+          <input type="hidden" name="userIdx" value="<%=currentUserIdx%>">
+          <input type="hidden" name="year" value="<%=year%>">
+          <input type="hidden" name="month" value="<%=month%>">
+          <input type="hidden" name="day" value="<%=day%>">
 <%  
         }
 %>  
