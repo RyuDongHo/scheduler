@@ -11,15 +11,36 @@ const contentInput = document.querySelectorAll(".schedule__content-input");
 // modifyBtn
 for (let i = 0; i < modifyBtn.length; ++i) {
   modifyBtn[i].addEventListener("click", () => {
-    const shcheduleWrapper = modifyBtn[i].parentElement;
+    const scheduleWrapper = modifyBtn[i].parentElement;
     modifyBtn[i].classList.add("no-display");
-    shcheduleWrapper.querySelector(".schedule__time-wrapper").classList.add("no-display");
-    shcheduleWrapper.querySelector(".schedule__content").classList.add("no-display");
-    shcheduleWrapper.querySelector(".schedule__content-input").classList.remove("no-display");
-    shcheduleWrapper.querySelector(".schedule__time-input-wrapper").classList.remove("no-display");
-    shcheduleWrapper.querySelector(".schedule-wrapper__cancel-btn").classList.remove("no-display");
-    shcheduleWrapper.querySelector(".schedule-wrapper__apply-btn").classList.remove("no-display");
-    shcheduleWrapper.querySelector(".schedule-wrapper__delete-btn").classList.add("no-display");
+    scheduleWrapper
+      .querySelector(".schedule__time-wrapper")
+      .classList.add("no-display");
+    scheduleWrapper
+      .querySelector(".schedule__content")
+      .classList.add("no-display");
+    scheduleWrapper
+      .querySelector(".schedule__content-input")
+      .classList.remove("no-display");
+    scheduleWrapper
+      .querySelector(".schedule__time-input-wrapper")
+      .classList.remove("no-display");
+    scheduleWrapper
+      .querySelector(".schedule-wrapper__cancel-btn")
+      .classList.remove("no-display");
+    scheduleWrapper
+      .querySelector(".schedule-wrapper__apply-btn")
+      .classList.remove("no-display");
+    scheduleWrapper
+      .querySelector(".schedule-wrapper__delete-btn")
+      .classList.add("no-display");
+
+    scheduleWrapper.querySelector(".schedule__start-time-input").value =
+      scheduleWrapper.querySelector(".schedule__start-time").innerText;
+    scheduleWrapper.querySelector(".schedule__end-time-input").value =
+      scheduleWrapper.querySelector(".schedule__end-time").innerText;
+    scheduleWrapper.querySelector(".schedule__content-input").value =
+      scheduleWrapper.querySelector(".schedule__content").innerText;
   });
 }
 // cancelBtn
@@ -27,20 +48,38 @@ for (let i = 0; i < cancelBtn.length; ++i) {
   cancelBtn[i].addEventListener("click", () => {
     const shcheduleWrapper = cancelBtn[i].parentElement;
     cancelBtn[i].classList.add("no-display");
-    shcheduleWrapper.querySelector(".schedule__time-wrapper").classList.remove("no-display");
-    shcheduleWrapper.querySelector(".schedule__content").classList.remove("no-display");
-    shcheduleWrapper.querySelector(".schedule__content-input").classList.add("no-display");
-    shcheduleWrapper.querySelector(".schedule__time-input-wrapper").classList.add("no-display");
-    shcheduleWrapper.querySelector(".schedule-wrapper__modify-btn").classList.remove("no-display");
-    shcheduleWrapper.querySelector(".schedule-wrapper__apply-btn").classList.add("no-display");
-    shcheduleWrapper.querySelector(".schedule-wrapper__delete-btn").classList.remove("no-display");
+    shcheduleWrapper
+      .querySelector(".schedule__time-wrapper")
+      .classList.remove("no-display");
+    shcheduleWrapper
+      .querySelector(".schedule__content")
+      .classList.remove("no-display");
+    shcheduleWrapper
+      .querySelector(".schedule__content-input")
+      .classList.add("no-display");
+    shcheduleWrapper
+      .querySelector(".schedule__time-input-wrapper")
+      .classList.add("no-display");
+    shcheduleWrapper
+      .querySelector(".schedule-wrapper__modify-btn")
+      .classList.remove("no-display");
+    shcheduleWrapper
+      .querySelector(".schedule-wrapper__apply-btn")
+      .classList.add("no-display");
+    shcheduleWrapper
+      .querySelector(".schedule-wrapper__delete-btn")
+      .classList.remove("no-display");
   });
 }
 // deletBtn
-for(let i = 0; i < deleteBtn.length; ++i){
-  deleteBtn[i].addEventListener("click", ()=>{
-    location.href = "../action/deleteScheduleAction.jsp?idx=" + deleteBtn[i].getAttribute("idx");
-  })
+for (let i = 0; i < deleteBtn.length; ++i) {
+  deleteBtn[i].addEventListener("click", () => {
+    location.href =
+      "../action/deleteScheduleAction.jsp?idx=" +
+      deleteBtn[i].dataset.scheduleIdx +
+      "&userIdx=" +
+      deleteBtn[i].dataset.currentUserIdx;
+  });
 }
 // input & applyBtn
 for (let i = 0; i < startTimeInput.length; ++i) {
