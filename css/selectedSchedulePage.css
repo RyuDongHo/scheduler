@@ -66,16 +66,29 @@ body {
   text-align: center;
   margin-right: 40px;
   background-color: var(--color-gray);
+  box-shadow: 0 0 0 0;
 }
-.schedule__time,
-.schedule__time-input {
-  width: 128px;
+
+.schedule__time-wrapper,
+.schedule__time-input-wrapper{
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  padding: 0;
+  margin: 40px 0 0 32px;
+}
+.schedule__start-time,
+.schedule__end-time,
+.schedule__start-time--passed,
+.schedule__end-time--passed,
+.schedule__start-time-input,
+.schedule__end-time-input {
+  width: 64px;
   height: 28px;
   line-height: 28px;
   text-align: center;
   background-color: var(--color-white);
   border-radius: 8px;
-  margin: 40px 0 0 32px;
 }
 .schedule__content {
   height: 24px;

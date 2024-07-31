@@ -16,7 +16,6 @@
   background-color: white;
   color: black;
 }
-
 .month{
   width: 96px;
   height: 40px;
@@ -45,8 +44,6 @@
 .month-wrapper__num:nth-last-of-type(1){
   border-radius: 0 8px 8px 0;
 }
-
-
 .calendar{
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -87,7 +84,6 @@
   background-color: #e6e6e6;
   font-weight: bold;
 }
-
 .background-white{
   background-color: var(--color-white);
 }
@@ -98,7 +94,6 @@
 
 
 /* ========================================= aside ========================================= */
-
 /* aside */
 aside {
   position: fixed;
@@ -144,7 +139,6 @@ aside {
   left: -1px;
   top: 2px;
 }
-
 .aside__lower-arrow {
   position: absolute;
   caret-color: transparent;
@@ -217,8 +211,4 @@ aside {
   background-color: var(--color-transparent);
   color: var(--color-mint);
   text-decoration: underline;
-}
-
-.hide{
-  visibility: hidden;
 }

@@ -19,6 +19,18 @@ body{
   gap: 40px;
 }
 
+.hide{
+  visibility: hidden;
+}
+.no-display{
+  display: none;
+  position: absolute;
+}
+.no-display *{
+  display: none;
+  height: 0;
+}
+
 /* 스크롤바 전체 */
 ::-webkit-scrollbar {
   width: 4px; /* 세로 스크롤바의 너비 */
